@@ -1,7 +1,0 @@
-body {
-    margin: 0;
-    overflow: hidden;
-}
-#myCanvas {
-    display: block; /* スクロールバーを削除 */
-}
