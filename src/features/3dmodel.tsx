@@ -68,6 +68,26 @@ function Modelcanvas() {
             },
         );
 
+        //--------------font.jsonファイルの読み込み--------------------------
+        const fontLoader = new FontLoader();
+        fontLoader.load('./fonts/helvetiker_regular.typeface.json', (font) => {
+            const createText = (text: string, position: THREE.Vector3, rotation: THREE.Euler = new THREE.Euler(0, 0, 0)) => {
+                const textGeometry = new TextGeometry(text, {
+                    font: font,
+                    size: 5,
+                    height: 1,
+                });
+                const textMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff });
+                const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+                textMesh.position.copy(position);
+                textMesh.rotation.copy(rotation);
+                textMesh.userData.text = text;
+                scene.add(textMesh);
+            };
+
+            createText('Building A', new THREE.Vector3(0, 20, 0));
+            createText('Building B', new THREE.Vector3(0, 10, 0));
+        });
 
 //         // -------------アニメーションの設定-----------------------------------
 
