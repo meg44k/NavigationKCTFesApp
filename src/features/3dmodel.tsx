@@ -70,34 +70,58 @@ function Modelcanvas() {
 
         //--------------font.jsonファイルの読み込み--------------------------
         const fontLoader = new FontLoader();
-        fontLoader.load('./fonts/helvetiker_regular.typeface.json', (font) => {
-            const createText = (text: string, position: THREE.Vector3, rotation: THREE.Euler = new THREE.Euler(0, 0, 0)) => {
+        fontLoader.load('/fonts/NotoSansJPRegular.json', (font) => {
+            const createText = (text: string, position: THREE.Vector3) => {
                 const textGeometry = new TextGeometry(text, {
                     font: font,
-                    size: 5,
+                    size: 3,
                     height: 1,
                 });
                 const textMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff });
                 const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-                textMesh.position.copy(position);
-                textMesh.rotation.copy(rotation);
-                textMesh.userData.text = text;
-                scene.add(textMesh);
-            };
 
-            createText('Building A', new THREE.Vector3(0, 20, 0));
-            createText('Building B', new THREE.Vector3(0, 10, 0));
+                // テキストの中心を計算
+                textGeometry.computeBoundingBox();
+                const centerOffset = new THREE.Vector3();
+                if (textGeometry.boundingBox) {
+                    textGeometry.boundingBox.getCenter(centerOffset);
+                }
+
+                // テキストメッシュをグループに追加し、ピボットポイントを調整
+                const textGroup = new THREE.Group();
+                textMesh.position.sub(centerOffset);
+                textGroup.add(textMesh);
+                textGroup.position.copy(position);
+
+                textGroup.userData.text = text;
+                scene.add(textGroup);
+            };
+            
+            createText('1号館', new THREE.Vector3(-20, 20, 15));
+            createText('2号館', new THREE.Vector3(-20, 20, 0));
+            createText('3号館', new THREE.Vector3(-20, 20, -20));
+            createText('4号館', new THREE.Vector3(20, 20, 35));
+            createText('5号館', new THREE.Vector3(40, 20, 35));
+            createText('6号館', new THREE.Vector3(20, 20, 18));
+            createText('7号館', new THREE.Vector3(20, 20, 2));
+            createText('8号館', new THREE.Vector3(20, 20, -18));
         });
 
 //         // -------------アニメーションの設定-----------------------------------
-
-        tick();
-        function tick(){
-            //  引数に渡された関数を毎フレーム呼び出す
+        function tick() {
             requestAnimationFrame(tick);
-            //シーンとカメラをレンダリングする
+            controls.update();
+
+            // テキストをカメラの方向に向ける
+            scene.traverse((object) => {
+                if (object instanceof THREE.Group && object.userData.text) {
+                    object.lookAt(camera.position);
+                }
+            });
+
             renderer.render(scene, camera);
         }
+        tick();
 
 //         // -------------画面サイズの変更に合わせてリサイズ-------------------------
 
