@@ -62,6 +62,12 @@ function Modelcanvas() {
         loader.load(
             './models/KCTSchoolModel.obj',
             function (obj) {
+                const lambertMaterial = new THREE.MeshLambertMaterial({ color: 0xebebeb });
+                obj.traverse((child) => {
+                    if (child instanceof THREE.Mesh) {
+                        child.material = lambertMaterial;
+                    }
+                });
                 scene.add(obj);
                 obj.position.x = 0;
                 obj.position.y = 0;
@@ -77,7 +83,7 @@ function Modelcanvas() {
                     size: 3,
                     height: 1,
                 });
-                const textMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff });
+                const textMaterial = new THREE.MeshPhongMaterial({ color: 0x000000 });
                 const textMesh = new THREE.Mesh(textGeometry, textMaterial);
 
                 // テキストの中心を計算
@@ -97,9 +103,9 @@ function Modelcanvas() {
                 scene.add(textGroup);
             };
             
-            createText('1号館', new THREE.Vector3(-20, 20, 15));
-            createText('2号館', new THREE.Vector3(-20, 20, 0));
-            createText('3号館', new THREE.Vector3(-20, 20, -20));
+            createText('1号館', new THREE.Vector3(-20, 15, 15));
+            createText('2号館', new THREE.Vector3(-20, 15, 0));
+            createText('3号館', new THREE.Vector3(-20, 15, -20));
             createText('4号館', new THREE.Vector3(20, 20, 35));
             createText('5号館', new THREE.Vector3(40, 20, 35));
             createText('6号館', new THREE.Vector3(20, 20, 18));
