@@ -93,10 +93,18 @@ function Modelcanvas() {
                 const textGeometry = new TextGeometry(text, {
                     font: font,
                     size: 3,
-                    depth: 1,
+                    height: 1,
+                    curveSegments: 12,
+                    bevelEnabled: true,
+                    bevelThickness: 0.1,
+                    bevelSize: 0.1,
+                    bevelOffset: 0,
+                    bevelSegments: 5
                 });
                 const textMaterial = new THREE.MeshPhongMaterial({ color: 0x000000 });
-                const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+                const borderMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff });
+                
+                const textMesh = new THREE.Mesh(textGeometry, [textMaterial, borderMaterial]);
 
                 // テキストの中心を計算
                 textGeometry.computeBoundingBox();
