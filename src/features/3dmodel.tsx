@@ -5,6 +5,8 @@ import './3dmodel.css';
 import * as THREE from 'three';
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
+import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader.js';
+import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 
@@ -58,21 +60,31 @@ function Modelcanvas() {
         //--------------設置するオブジェクトの作成--------------------------
 
             // 3Dモデルの読み込み
-        const loader = new OBJLoader();
-        loader.load(
-            './models/KCTSchoolModel.obj',
-            function (obj) {
-                const lambertMaterial = new THREE.MeshLambertMaterial({ color: 0xebebeb });
-                obj.traverse((child) => {
-                    if (child instanceof THREE.Mesh) {
-                        child.material = lambertMaterial;
-                    }
-                });
-                scene.add(obj);
-                obj.position.x = 0;
-                obj.position.y = 0;
-            },
-        );
+            const manager = new THREE.LoadingManager();
+            manager.addHandler(/\.dds$/i, new DDSLoader()); // DDSローダーの準備
+            // manager.addHandler(/\.tga$/i, new TGALoader()); // TGAローダーの準備 (今回は未使用)
+            
+            // MTLファイルの読み込み
+            new MTLLoader(manager).load(
+              'models/KCTSchoolModel.mtl',
+              // ロード完了時の処理
+              function (materials) {
+                materials.preload();
+            
+                // OBJファイルの読み込み
+                new OBJLoader(manager)
+                  .setMaterials(materials) // マテリアルの指定
+                  .load(
+                    'models/KCTSchoolModel.obj', 
+                    // ロード完了時の処理
+                    function (object) {
+                      // シーンへのモデルの追加
+                      scene.add(object);
+                      object.position.x = 0;
+                      object.position.y = 0;
+                    });
+              },
+            );
 
         //--------------font.jsonファイルの読み込み--------------------------
         const fontLoader = new FontLoader();
