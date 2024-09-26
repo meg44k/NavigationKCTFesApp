@@ -13,6 +13,14 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        zenKurenaido: ['Zen Kurenaido', 'sans-serif']
+      },
+      colors: {
+        'kct-red' : '#FF426C',
+        'kct-blue' : '#013FF9',
+        'kct-yellow' : '#FFB100',
+      },
     },
   },
   plugins: [],
