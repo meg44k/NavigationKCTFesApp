@@ -22,7 +22,7 @@ function Modelcanvas() {
           }
       
         // WebGLRendererの作成
-        const renderer = new THREE.WebGLRenderer({ canvas });
+        const renderer = new THREE.WebGLRenderer({ canvas ,antialias: true});
         //  canvasのサイズを指定
         renderer.setSize( width, height );
         document.body.appendChild( renderer.domElement );
@@ -81,7 +81,7 @@ function Modelcanvas() {
                 const textGeometry = new TextGeometry(text, {
                     font: font,
                     size: 3,
-                    height: 1,
+                    depth: 1,
                 });
                 const textMaterial = new THREE.MeshPhongMaterial({ color: 0x000000 });
                 const textMesh = new THREE.Mesh(textGeometry, textMaterial);
