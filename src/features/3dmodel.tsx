@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import './3dmodel.css';
 import * as THREE from 'three';
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -10,7 +10,15 @@ import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 
-function Modelcanvas() {  
+interface Position {
+    latitude: number;//緯度
+    longitude: number;//経度
+}
+
+function Modelcanvas() {
+    const [position, setPosition] = useState<Position | null>(null);
+    const [error, setError] = useState<string | null>(null);
+
     useEffect(() => {
         //--------------3D空間を扱うための設定--------------------------
         const width = window.innerWidth;
@@ -21,13 +29,13 @@ function Modelcanvas() {
         if (!canvas) {
             console.error('Canvas element not found');
             return;
-          }
-      
+        }
+
         // WebGLRendererの作成
-        const renderer = new THREE.WebGLRenderer({ canvas ,antialias: true});
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
         //  canvasのサイズを指定
-        renderer.setSize( width, height );
-        document.body.appendChild( renderer.domElement );
+        renderer.setSize(width, height);
+        document.body.appendChild(renderer.domElement);
 
         //  シーンを作成、シーンは3D空間のこと
         const scene = new THREE.Scene();
@@ -46,7 +54,7 @@ function Modelcanvas() {
             }
         });
 
-         // 環境光源を作成
+        // 環境光源を作成
         const ambientLight = new THREE.AmbientLight(0xffffff);
         ambientLight.intensity = 0.5;
         scene.add(ambientLight);
@@ -59,7 +67,6 @@ function Modelcanvas() {
 
         //--------------設置するオブジェクトの作成--------------------------
 
-            
         // 3Dモデルの読み込み
         const manager = new THREE.LoadingManager();
         manager.addHandler(/\.dds$/i, new DDSLoader()); // DDSローダーの準備
@@ -85,7 +92,7 @@ function Modelcanvas() {
                         });
             },
         );
-        
+
         //--------------font.jsonファイルの読み込み--------------------------
         const fontLoader = new FontLoader();
         fontLoader.load('/fonts/NotoSansJPRegular.json', (font) => {
@@ -103,7 +110,7 @@ function Modelcanvas() {
                 });
                 const textMaterial = new THREE.MeshPhongMaterial({ color: 0x000000 });
                 const borderMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff });
-                
+
                 const textMesh = new THREE.Mesh(textGeometry, [textMaterial, borderMaterial]);
 
                 // テキストの中心を計算
@@ -122,7 +129,7 @@ function Modelcanvas() {
                 textGroup.userData.text = text;
                 scene.add(textGroup);
             };
-            
+
             createText('1号館', new THREE.Vector3(-20, 15, 15));
             createText('2号館', new THREE.Vector3(-20, 15, 0));
             createText('3号館', new THREE.Vector3(-20, 15, -20));
@@ -133,7 +140,55 @@ function Modelcanvas() {
             createText('8号館', new THREE.Vector3(20, 20, -18));
         });
 
-//         // -------------アニメーションの設定-----------------------------------
+        //--------------現在地のマーカーを表示--------------------------------
+        // const geometry = new THREE.SphereGeometry(5, 32, 32);
+        // const material = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true });
+        // const sphere = new THREE.Mesh(geometry, material);
+        // const updatePosition = (latitude: number, longitude: number) => {
+        //     if (sphere) {
+        //         const phi = (90 - latitude) * (Math.PI / 180);
+        //         const theta = (longitude + 180) * (Math.PI / 180);
+        //         const x = -5 * Math.sin(phi) * Math.cos(theta);
+        //         const y = 5 * Math.cos(phi);
+        //         const z = 5 * Math.sin(phi) * Math.sin(theta);
+
+        //         const markerGeometry = new THREE.SphereGeometry(0.1, 32, 32);
+        //         const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        //         const marker = new THREE.Mesh(markerGeometry, markerMaterial);
+        //         marker.position.set(x, y, z);
+        //         scene.add(marker);
+        //     }
+        // };
+
+        //---------------自分の位置を取得--------------------------------------
+        const watchPosition = () => {
+            if ('geolocation' in navigator) {
+                navigator.geolocation.watchPosition(
+                    (pos) => {
+                        const newPosition = {
+                            latitude: pos.coords.latitude,
+                            longitude: pos.coords.longitude,
+                        };
+                        setPosition(newPosition);
+                        // updatePosition(newPosition.latitude, newPosition.longitude);
+                    },
+                    (err) => {
+                        setError(`エラー: ${err.message}`);
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0,
+                    }
+                );
+            } else {
+                setError('Geolocation APIがサポートされていません。');
+            }
+        };
+
+        watchPosition();
+
+        // -------------アニメーションの設定-----------------------------------
         function tick() {
             requestAnimationFrame(tick);
             controls.update();
@@ -149,7 +204,7 @@ function Modelcanvas() {
         }
         tick();
 
-//         // -------------画面サイズの変更に合わせてリサイズ-------------------------
+        // -------------画面サイズの変更に合わせてリサイズ-------------------------
 
         window.addEventListener('resize', () => {
             const width = window.innerWidth;
@@ -159,10 +214,43 @@ function Modelcanvas() {
             camera.updateProjectionMatrix();
         });
     }, []);
+
     return (
-      <>
-        <canvas id="myCanvas"></canvas>
-      </>
+        <>
+            <canvas id="myCanvas"></canvas>
+            {position && (
+                <div style={{
+                    position: 'absolute',
+                    top: '10px',
+                    left: '10px',
+                    background: 'rgba(255, 255, 255, 0.7)',
+                    padding: '10px',
+                    borderRadius: '5px',
+                    fontFamily: 'Arial, sans-serif',
+                    fontSize: '14px',
+                    zIndex: 1000
+                }}>
+                    <p>緯度: {position.latitude.toFixed(6)}</p>
+                    <p>経度: {position.longitude.toFixed(6)}</p>
+                </div>
+            )}
+            {error && (
+                <div style={{
+                    position: 'absolute',
+                    bottom: '10px',
+                    left: '10px',
+                    background: 'rgba(255, 0, 0, 0.7)',
+                    color: 'white',
+                    padding: '10px',
+                    borderRadius: '5px',
+                    fontFamily: 'Arial, sans-serif',
+                    fontSize: '14px',
+                    zIndex: 1000
+                }}>
+                    {error}
+                </div>
+            )}
+        </>
     );
 }
 
