@@ -32,29 +32,10 @@ export default function Main() {
         >
           {clicked ? (
             <h1 className="text-2xl font-bold">A</h1>
-            // <svg
-            //   xmlns="http://www.w3.org/2000/svg"
-            //   viewBox="0 0 24 24"
-            //   fill="white"
-            //   width="24px"
-            //   height="24px"
-            // >
-            //   <path d="M0 0h24v24H0z" fill="none" />
-            //   <path d="M6 18L18 6M6 6l12 12" />
-            // </svg>
+
           ) : (
             <h1 className="text-2xl font-bold">B</h1>
 
-            // <svg
-            //   xmlns="http://www.w3.org/2000/svg"
-            //   viewBox="0 0 24 24"
-            //   fill="white"
-            //   width="24px"
-            //   height="24px"
-            // >
-            //   <path d="M0 0h24v24H0z" fill="none" />
-            //   <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
-            // </svg>
           )}
 
         </button>

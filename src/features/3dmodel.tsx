@@ -59,33 +59,33 @@ function Modelcanvas() {
 
         //--------------設置するオブジェクトの作成--------------------------
 
-            // 3Dモデルの読み込み
-            const manager = new THREE.LoadingManager();
-            manager.addHandler(/\.dds$/i, new DDSLoader()); // DDSローダーの準備
-            // manager.addHandler(/\.tga$/i, new TGALoader()); // TGAローダーの準備 (今回は未使用)
             
-            // MTLファイルの読み込み
-            new MTLLoader(manager).load(
-              'models/KCTSchoolModel.mtl',
-              // ロード完了時の処理
-              function (materials) {
+        // 3Dモデルの読み込み
+        const manager = new THREE.LoadingManager();
+        manager.addHandler(/\.dds$/i, new DDSLoader()); // DDSローダーの準備
+        
+        // MTLファイルの読み込み
+        new MTLLoader(manager).load(
+            'models/v2/KCTSchoolModel.mtl',
+            // ロード完了時の処理
+            function (materials) {
                 materials.preload();
-            
+
                 // OBJファイルの読み込み
                 new OBJLoader(manager)
-                  .setMaterials(materials) // マテリアルの指定
-                  .load(
-                    'models/KCTSchoolModel.obj', 
-                    // ロード完了時の処理
-                    function (object) {
-                      // シーンへのモデルの追加
-                      scene.add(object);
-                      object.position.x = 0;
-                      object.position.y = 0;
-                    });
-              },
-            );
-
+                    .setMaterials(materials) // マテリアルの指定
+                    .load(
+                        'models/v2/KCTSchoolModel.obj',
+                        // ロード完了時の処理
+                        function (object) {
+                            // シーンへのモデルの追加
+                            scene.add(object);
+                            object.position.x = 0;
+                            object.position.y = 0;
+                        });
+            },
+        );
+        
         //--------------font.jsonファイルの読み込み--------------------------
         const fontLoader = new FontLoader();
         fontLoader.load('/fonts/NotoSansJPRegular.json', (font) => {
