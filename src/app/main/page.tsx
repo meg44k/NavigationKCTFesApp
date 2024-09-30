@@ -27,7 +27,7 @@ export default function Main() {
         <button
           id="button"
           type="button"
-          className="fixed top-6 right-6 z-10"
+          className="fixed right-6 z-10"
           onClick={hamClicked}
         >
           {clicked ? (

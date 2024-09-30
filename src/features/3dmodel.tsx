@@ -141,6 +141,11 @@ function Modelcanvas() {
         });
 
         //--------------現在地のマーカーを表示--------------------------------
+        const markerGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+        const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        const marker = new THREE.Mesh(markerGeometry, markerMaterial);
+        marker.position.set(0, 3, 0);
+        scene.add(marker);
         // const geometry = new THREE.SphereGeometry(5, 32, 32);
         // const material = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true });
         // const sphere = new THREE.Mesh(geometry, material);
@@ -152,11 +157,6 @@ function Modelcanvas() {
         //         const y = 5 * Math.cos(phi);
         //         const z = 5 * Math.sin(phi) * Math.sin(theta);
 
-        //         const markerGeometry = new THREE.SphereGeometry(0.1, 32, 32);
-        //         const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-        //         const marker = new THREE.Mesh(markerGeometry, markerMaterial);
-        //         marker.position.set(x, y, z);
-        //         scene.add(marker);
         //     }
         // };
 
