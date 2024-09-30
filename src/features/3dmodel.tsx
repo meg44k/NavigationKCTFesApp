@@ -166,8 +166,8 @@ function Modelcanvas() {
                 navigator.geolocation.watchPosition(
                     (pos) => {
                         const newPosition = {
-                            latitude: pos.coords.latitude,
-                            longitude: pos.coords.longitude,
+                            latitude: pos.coords.latitude * 1000000,
+                            longitude: pos.coords.longitude * 1000000,
                         };
                         setPosition(newPosition);
                         // updatePosition(newPosition.latitude, newPosition.longitude);
