@@ -39,6 +39,7 @@ function Modelcanvas() {
 
         //  シーンを作成、シーンは3D空間のこと
         const scene = new THREE.Scene();
+        scene.background = new THREE.Color( 0x3B3D3D );
 
         // カメラの作成 new THREE.PerspectiveCamera(画角, アスペクト比)
         const camera = new THREE.PerspectiveCamera(45, width / height);
@@ -49,7 +50,7 @@ function Modelcanvas() {
         controls.maxPolarAngle = Math.PI / 2; // 最大の垂直角度 (90度)
         // カメラの位置を制限するための関数
         controls.addEventListener('change', () => {
-            if (camera.position.y < -2) {
+            if (camera.position.y < 0) {
                 camera.position.y = 0;
             }
         });
@@ -103,8 +104,8 @@ function Modelcanvas() {
                     height: 1,
                     curveSegments: 12,
                     bevelEnabled: true,
-                    bevelThickness: 0.1,
-                    bevelSize: 0.1,
+                    bevelThickness: 0.2,
+                    bevelSize: 0.2,
                     bevelOffset: 0,
                     bevelSegments: 5
                 });
@@ -130,35 +131,39 @@ function Modelcanvas() {
                 scene.add(textGroup);
             };
 
-            createText('1号館', new THREE.Vector3(-20, 15, 15));
-            createText('2号館', new THREE.Vector3(-20, 15, 0));
-            createText('3号館', new THREE.Vector3(-20, 15, -20));
-            createText('4号館', new THREE.Vector3(20, 20, 35));
-            createText('5号館', new THREE.Vector3(40, 20, 35));
-            createText('6号館', new THREE.Vector3(20, 20, 18));
-            createText('7号館', new THREE.Vector3(20, 20, 2));
-            createText('8号館', new THREE.Vector3(20, 20, -18));
+            createText('1号館', new THREE.Vector3(-20, 15, 23));
+            createText('2号館', new THREE.Vector3(-24, 15, 7));
+            createText('3号館', new THREE.Vector3(-20, 15, -15));
+            createText('4号館', new THREE.Vector3(20, 20, 40));
+            createText('5号館', new THREE.Vector3(35, 20, 40));
+            createText('6号館', new THREE.Vector3(20, 15, 23));
+            createText('7号館', new THREE.Vector3(20, 15, 7));
+            createText('8号館', new THREE.Vector3(20, 15, -13));
+            createText('ライブ会場', new THREE.Vector3(-40, 15, -40));
         });
 
         //--------------現在地のマーカーを表示--------------------------------
         const markerGeometry = new THREE.SphereGeometry(0.5, 32, 32);
         const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        const LARGE_NUM : number = 10000;
         const marker = new THREE.Mesh(markerGeometry, markerMaterial);
-        marker.position.set(0, 3, 0);
         scene.add(marker);
-        // const geometry = new THREE.SphereGeometry(5, 32, 32);
-        // const material = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true });
-        // const sphere = new THREE.Mesh(geometry, material);
-        // const updatePosition = (latitude: number, longitude: number) => {
-        //     if (sphere) {
-        //         const phi = (90 - latitude) * (Math.PI / 180);
-        //         const theta = (longitude + 180) * (Math.PI / 180);
-        //         const x = -5 * Math.sin(phi) * Math.cos(theta);
-        //         const y = 5 * Math.cos(phi);
-        //         const z = 5 * Math.sin(phi) * Math.sin(theta);
+        const updatePosition = (latitude: number, longitude: number) => {
 
-        //     }
-        // };
+            //3Dモデルの原点
+            const zeroPoint : Position = {latitude: 33.816035, longitude: 130.87196};
+
+            // 33.816432,130.871320 最終桁は停止時でも+-3程度変動
+            // 小数点以下5桁目で計算する
+            //33.81603 - 33.81643 = -0.0004 * 10000 = -4
+            //130.87196 - 130.87132 = 0.00064 * 10000 = 6.4　８0m
+
+            const markX = (latitude  * LARGE_NUM) - (zeroPoint.latitude * LARGE_NUM);//ここをマイナスすると、上にマーカーが移動
+            console.log(markX);
+            const markZ = (longitude  * LARGE_NUM) - (zeroPoint.longitude * LARGE_NUM);//ここをマイナスすると、右にマーカーが移動
+            console.log(markZ);
+            marker.position.set(markX, 5, markZ);
+        };
 
         //---------------自分の位置を取得--------------------------------------
         const watchPosition = () => {
@@ -166,11 +171,11 @@ function Modelcanvas() {
                 navigator.geolocation.watchPosition(
                     (pos) => {
                         const newPosition = {
-                            latitude: pos.coords.latitude * 1000000,
-                            longitude: pos.coords.longitude * 1000000,
+                            latitude: pos.coords.latitude,
+                            longitude: pos.coords.longitude,
                         };
                         setPosition(newPosition);
-                        // updatePosition(newPosition.latitude, newPosition.longitude);
+                        updatePosition(newPosition.latitude, newPosition.longitude);
                     },
                     (err) => {
                         setError(`エラー: ${err.message}`);
@@ -255,3 +260,4 @@ function Modelcanvas() {
 }
 
 export default Modelcanvas;
+
