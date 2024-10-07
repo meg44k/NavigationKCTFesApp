@@ -21,6 +21,7 @@ const config: Config = {
         'kct-red' : '#FF426C',
         'kct-blue' : '#013FF9',
         'kct-yellow' : '#FFB100',
+        'kct-black' : '#212121',
       },
     },
   },
