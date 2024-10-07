@@ -10,13 +10,13 @@ const TrainOneFont = Train_One({
   });;
 
 export default function Header() {
-    const [clicked, setClicked] = useState(false);
+    const [clicked, setClicked] = useState(true);
     const hamClicked = () => {
     setClicked(!clicked);
     }
     return(
         <>
-            <header className="absolute flex top-0 left-0 right-0 z-10 border-b-2 border-white text-white p-4">
+            <header className="absolute flex items-center top-0 left-0 right-0 z-10 border-b-2 border-white text-white p-4">
                 <div className={`${TrainOneFont.className} text-2xl font-bold`}>
                     <span className="text-kct-yellow">高</span>
                     <span className="text-kct-red">専</span>
@@ -29,13 +29,12 @@ export default function Header() {
                 onClick={hamClicked}
                 >
                 {clicked ? (
-                    <h1 className="text-2xl font-bold">A</h1>
+                    <img className="w-6 h-6" src="./HamburgerBar.svg" alt="" />
 
                 ) : (
-                    <h1 className="text-2xl font-bold">B</h1>
+                    <img className="w-6 h-6" src="./cross.svg" alt="" />
 
                 )}
-
                 </button>
             </header>
         </>
