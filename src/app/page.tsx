@@ -18,8 +18,8 @@ export default function Home() {
         <div className="grid w-screen h-screen bg-kct-black place-content-center">
           <div className="w-80 h-44 border-y-2 border-white py-4">
             <div className="flex flex-col justify-between items-center w-full h-full">
-              <div className={`${BIZUDMinchoFont.className} flex justify-between text-white w-full`}><span>北</span><span>九</span><span>州</span><span>高</span><span>専</span></div>
-              <div className={`${TrainOneFont.className} flex justify-between text-white w-full text-8xl`}>
+              <div className={`${BIZUDMinchoFont.className} flex justify-between text-white w-full select-none`}><span>北</span><span>九</span><span>州</span><span>高</span><span>専</span></div>
+              <div className={`${TrainOneFont.className} flex justify-between text-white w-full text-8xl select-none`}>
                 <span className="text-kct-yellow">高</span>
                 <span className="text-kct-red">専</span>
                 <span className="text-kct-blue">祭</span></div>
