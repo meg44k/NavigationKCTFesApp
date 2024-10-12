@@ -223,7 +223,7 @@ function Modelcanvas() {
     return (
         <>
             <canvas id="myCanvas"></canvas>
-            {position && (
+            {/* {position && (
                 <div style={{
                     position: 'absolute',
                     top: '10px',
@@ -254,7 +254,7 @@ function Modelcanvas() {
                 }}>
                     {error}
                 </div>
-            )}
+            )} */}
         </>
     );
 }
