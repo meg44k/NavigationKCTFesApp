@@ -24,6 +24,9 @@ const config: Config = {
         'kct-black' : '#212121',
       },
     },
+    screens: {
+      'iPhoneSE': '400px',
+    },
   },
   plugins: [],
 };
