@@ -101,7 +101,7 @@ function Modelcanvas() {
                 const textGeometry = new TextGeometry(text, {
                     font: font,
                     size: 3,
-                    height: 1,
+                    depth: 1,
                     curveSegments: 12,
                     bevelEnabled: true,
                     bevelThickness: 0.2,
@@ -166,32 +166,32 @@ function Modelcanvas() {
         };
 
         //---------------自分の位置を取得--------------------------------------
-        const watchPosition = () => {
-            if ('geolocation' in navigator) {
-                navigator.geolocation.watchPosition(
-                    (pos) => {
-                        const newPosition = {
-                            latitude: pos.coords.latitude,
-                            longitude: pos.coords.longitude,
-                        };
-                        setPosition(newPosition);
-                        updatePosition(newPosition.latitude, newPosition.longitude);
-                    },
-                    (err) => {
-                        setError(`エラー: ${err.message}`);
-                    },
-                    {
-                        enableHighAccuracy: true,
-                        timeout: 5000,
-                        maximumAge: 0,
-                    }
-                );
-            } else {
-                setError('Geolocation APIがサポートされていません。');
-            }
-        };
+        // const watchPosition = () => {
+        //     if ('geolocation' in navigator) {
+        //         navigator.geolocation.watchPosition(
+        //             (pos) => {
+        //                 const newPosition = {
+        //                     latitude: pos.coords.latitude,
+        //                     longitude: pos.coords.longitude,
+        //                 };
+        //                 setPosition(newPosition);
+        //                 updatePosition(newPosition.latitude, newPosition.longitude);
+        //             },
+        //             (err) => {
+        //                 setError(`エラー: ${err.message}`);
+        //             },
+        //             {
+        //                 enableHighAccuracy: true,
+        //                 timeout: 5000,
+        //                 maximumAge: 0,
+        //             }
+        //         );
+        //     } else {
+        //         setError('Geolocation APIがサポートされていません。');
+        //     }
+        // };
 
-        watchPosition();
+        // watchPosition();
 
         // -------------アニメーションの設定-----------------------------------
         function tick() {
