@@ -1,0 +1,223 @@
+import React from 'react';
+import Header from "@/features/header";
+import './style.css';
+import BackSquare1 from '@/features/ui/square1';
+import BackSquare2 from '@/features/ui/square2';
+import BackSquare3 from '@/features/ui/square3';
+import BackSquare4 from '@/features/ui/square4';
+import BackSquare5 from '@/features/ui/square5';
+export default function Introduction() {
+    return(
+    <>
+        <Header ></Header>
+        <div className='main justify-center flex flex-wrap pt-[70px] pb-[40px] bg-kct-black'>
+        <h1 className='year text-4xl w-full p-[2%] text-white font-mono'>一年坊</h1>
+        <BackSquare1
+            Class="1-1"
+            Intro="ああああああああああいいいいいいいいいいううううううううううええええええええええおおおおお"
+        />
+        <BackSquare2
+            Class="1-2"
+            Intro="説明欄には45文字くらいが入るね！"
+        />
+        <BackSquare3
+            Class="1-3"
+            Intro="説明"
+        />
+        <BackSquare4
+            Class="1-4"
+            Intro="説明"
+        />
+        <BackSquare5
+            Class="1-5"
+            Intro="説明"
+        />
+        <h1 className='year text-4xl w-full p-[2%] text-white font-mono'>二年坊</h1>
+        <BackSquare1
+            Class="2-1"
+            Intro="説明"
+        />
+        <BackSquare2
+            Class="2-2"
+            Intro="説明"
+        />
+        <BackSquare3
+            Class="2-3"
+            Intro="説明"
+        />
+        <BackSquare4
+            Class="2-4"
+            Intro="説明"
+        />
+        <BackSquare5
+            Class="2-5"
+            Intro="説明"
+        />
+        <h1 className='year text-4xl w-full p-[2%] text-white font-mono'>三ガキ</h1>
+        <BackSquare1
+            Class="3-1"
+            Intro="説明"
+        />
+        <BackSquare2
+            Class="3-2"
+            Intro="説明"
+        />
+        <BackSquare3
+            Class="3-3"
+            Intro="説明"
+        />
+        <BackSquare4
+            Class="3-4"
+            Intro="説明"
+        />
+        <BackSquare5
+            Class="3-5"
+            Intro="説明"
+        />
+        <h1 className='year text-4xl w-full p-[2%] text-white font-mono'>四年児</h1>
+        <BackSquare1
+            Class="4-M(機械)"
+            Intro="説明"
+        />
+        <BackSquare2
+            Class="4-R(ロボット)"
+            Intro="説明"
+        />
+        <BackSquare3
+            Class="4-E(電気)"
+            Intro="説明"
+        />
+        <BackSquare4
+            Class="4-I(情報)"
+            Intro="説明"
+        />
+        <BackSquare5
+            Class="4-C(科学)"
+            Intro="説明"
+        />
+        <h1 className='year text-4xl w-full p-[2%] text-white font-mono'>五年</h1>
+        <BackSquare1
+            Class="5-M(機械)"
+            Intro="説明"
+        />
+        <BackSquare2
+            Class="5-R(知能)"
+            Intro="説明"
+        />
+        <BackSquare3
+            Class="5-E(電気)"
+            Intro="説明"
+        />
+        <BackSquare4
+            Class="5-I(情報)"
+            Intro="説明"
+        />
+        <BackSquare5
+            Class="5-C(科学)"
+            Intro="説明"
+        />
+        <h1 className='year text-4xl w-full p-[2%] text-white font-mono'>クラブバザー</h1>
+        <h3 className='year text-4xl w-full p-[2%] text-white font-mono'>屋内バザー</h3>
+        <BackSquare5
+            Class="コンピュータ研究会"
+            Intro="オリジナルグッズ"
+        />
+        <BackSquare5
+            Class="美術部"
+            Intro="イラスト本，色紙，ポスターカード"
+        />
+        <h2 className='year text-4xl w-full p-[2%] text-white font-mono'>屋外バザー</h2>
+        <BackSquare5
+            Class="弓道部"
+            Intro="焼き鳥"
+        />
+        <BackSquare5
+            Class="吹奏楽部"
+            Intro="フランクフルト"
+        />
+        <BackSquare5
+            Class="卓球部"
+            Intro="わらび餅ドリンク"
+        />
+        <BackSquare5
+            Class="バドミントン部"
+            Intro="五平餅"
+        />
+        <BackSquare5
+            Class="科学愛好会"
+            Intro="白玉団子"
+        />
+        <BackSquare5
+            Class="高専企業部"
+            Intro="キーホルダー"
+        />
+        <BackSquare5
+            Class="ロボットデザイン研究会"
+            Intro="ベビーカステラ"
+        />
+        <BackSquare5
+            Class="硬式テニス部"
+            Intro="フルーツドリンク"
+        />
+        <BackSquare5
+            Class="武道部(空手，柔道，剣道）"
+            Intro="白玉ソーダ"
+        />
+        <BackSquare5
+            Class="女子寮"
+            Intro="ワッフル"
+        />
+        <BackSquare5
+            Class="陸上部"
+            Intro="カレー"
+        />
+        <BackSquare5
+            Class="ソフトテニス部"
+            Intro="わたがし"
+        />
+        <BackSquare5
+            Class="女子バスケ部"
+            Intro="焼きうどん"
+        />
+        <BackSquare5
+            Class="ラグビー部"
+            Intro="プロテイン飲料"
+        />
+        <BackSquare5
+            Class="サッカー部"
+            Intro="うどん"
+        />
+        <BackSquare5
+            Class="男子バスケ部"
+            Intro="ホットサンド"
+        />
+        <BackSquare5
+            Class="男子寮"
+            Intro="焼き餃子"
+        />
+        <BackSquare5
+            Class="野球部"
+            Intro="ホットドッグ"
+        />
+        <BackSquare5
+            Class="男子バレー部"
+            Intro="たこ焼き"
+        />
+        <BackSquare5
+            Class="ハンドボール部"
+            Intro="焼きそば"
+        />
+        <BackSquare5
+            Class="ロボコン"
+            Intro="パンケーキ"
+        />
+        <BackSquare5
+            Class="学生会"
+            Intro="フライドポテト・ベビーカステラ"
+        />
+
+
+        </div>
+    </>
+    );
+}

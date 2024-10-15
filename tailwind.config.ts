@@ -5,6 +5,9 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/features/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/features/ui/**/*.{js,ts,jsx,tsx,mdx}",
+
   ],
   theme: {
     extend: {
@@ -20,6 +23,7 @@ const config: Config = {
         'kct-red' : '#FF426C',
         'kct-blue' : '#013FF9',
         'kct-yellow' : '#FFB100',
+        'kct-black' : '#212121',
       },
     },
   },
