@@ -19,6 +19,7 @@ export default function Introduction() {
                     Class="1-1"
                     Title="脱獄タイムアタック"
                     Intro="刑務所からの脱獄！罠や謎を速く正確に解きまくれ！！"
+
                 />
                 <BackSquare
                     BGColor='border-white'
@@ -171,147 +172,147 @@ export default function Introduction() {
                 <h1 className={`${TrainOneFont.className} year text-4xl w-full p-[2%] text-white`}>クラブバザー</h1>
                 <h3 className={`${TrainOneFont.className} year text-3xl w-full p-[2%] text-white`}>屋内バザー</h3>
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="コンピュータ研究会"
                     Intro="オリジナルグッズ"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="美術部"
                     Intro="イラスト本，色紙，ポスターカード"
                 />
                 <h2 className={`${TrainOneFont.className} year text-3xl w-full p-[2%] text-white`}>屋外バザー</h2>
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="弓道部"
                     Intro="焼き鳥"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="吹奏楽部"
                     Intro="フランクフルト"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="卓球部"
                     Intro="わらび餅ドリンク"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="バドミントン部"
                     Intro="五平餅"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="科学愛好会"
                     Intro="白玉団子"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="高専企業部"
                     Intro="キーホルダー"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="ロボットデザイン研究会"
                     Intro="ベビーカステラ"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="硬式テニス部"
                     Intro="フルーツドリンク"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="武道部(空手，柔道，剣道）"
                     Intro="白玉ソーダ"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="女子寮"
                     Intro="ワッフル"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="陸上部"
                     Intro="カレー"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="ソフトテニス部"
                     Intro="わたがし"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="女子バスケ部"
                     Intro="焼きうどん"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="ラグビー部"
                     Intro="プロテイン飲料"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="サッカー部"
                     Intro="うどん"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="男子バスケ部"
                     Intro="ホットサンド"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="男子寮"
                     Intro="焼き餃子"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="野球部"
                     Intro="ホットドッグ"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="男子バレー部"
                     Intro="たこ焼き"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="ハンドボール部"
                     Intro="焼きそば"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="ロボコン"
                     Intro="パンケーキ"
                 />
                 <BackSquare
-                    BGColor='border-red-600'
-                    Class=""
+                    BGColor='border-sky-300'
+                    Club={true}
                     Title="学生会"
                     Intro="フライドポテト・ベビーカステラ"
                 />
