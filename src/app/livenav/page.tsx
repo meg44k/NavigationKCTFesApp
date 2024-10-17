@@ -1,11 +1,11 @@
 "use client";
-// import Image from "next/image";
+import Image from "next/image";
 
 import {useState, useEffect} from 'react';
 import { defTeam, band, team2} from '@/features/Teams';
 import {day1, day2} from '@/features/Lives';
 
-export function CurrentLive({live,setTeam,showDetail}:{live:{name:string,startTime:string},setTeam: () => void,showDetail: () => void}) {
+function CurrentLive({live,setTeam,showDetail}:{live:{name:string,startTime:string},setTeam: () => void,showDetail: () => void}) {
     const setDetail = () => {
         setTeam();
         showDetail();
@@ -18,9 +18,9 @@ export function CurrentLive({live,setTeam,showDetail}:{live:{name:string,startTi
             </button>
         </div>
     );
-}
+};
 
-export function Schedule({live,setTeam,showDetail}:{live:{name:string,startTime:string},setTeam: () => void,showDetail: () => void}) {
+function Schedule({live,setTeam,showDetail}:{live:{name:string,startTime:string},setTeam: () => void,showDetail: () => void}) {
     const setDetail = () => {
         setTeam();
         showDetail();
@@ -33,16 +33,16 @@ export function Schedule({live,setTeam,showDetail}:{live:{name:string,startTime:
             </button>
         </div>
     );
-}
+};
 
-export function LiveDetail({team,hideDetail}:{team:{name:string,startTime:string,teams:string[]}, hideDetail: () => void}) {
+function LiveDetail({team,hideDetail}:{team:{name:string,startTime:string,teams:string[]}, hideDetail: () => void}) {
     return(
             <div className="fixed inset-0 flex items-center justify-center bg-slate-50/70 backdrop-blur-md z-10">
                 <div className="bg-yellow-300/70 backdrop-blur-md shadow-2xl w-11/12 max-w-md border border-black absolute rounded-2xl">
                     <div className="flex border-b border-black justify-between mx-3">
                         <div className="font-semibold py-2 text-2xl inline">{team.name}</div>
                         <button  type="button" onClick={hideDetail} className="w-6 h-6 pt-3">
-                            <img src="/BlackCross.svg" alt="Icon"/>
+                            <Image src="/BlackCross.svg" alt="Icon"/>
                         </button>
                     </div>
                     <div className="font-semibold py-2 pl-3 pr-28 text-2xl">出場チーム</div>
@@ -58,7 +58,7 @@ export function LiveDetail({team,hideDetail}:{team:{name:string,startTime:string
                 </div>
             </div>
     );
-}
+};
 
 export default function Home(){
     const [detailIsVisible, setDetailIsVisible] = useState(false);
@@ -198,4 +198,4 @@ export default function Home(){
             </div>
         </>
     );
-}
+};
