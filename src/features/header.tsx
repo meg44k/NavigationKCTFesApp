@@ -16,7 +16,7 @@ export default function Header() {
     }
     return(
         <>
-            <header className="absolute flex top-0 left-0 right-0 z-10 border-b-2 border-white text-white p-4">
+            <header className="fixed flex top-0 left-0 right-0 z-10 border-b-2 border-white text-white p-4 bg-kct-black">
                 <div className={`${TrainOneFont.className} text-2xl font-bold`}>
                     <span className="text-kct-yellow">高</span>
                     <span className="text-kct-red">専</span>
