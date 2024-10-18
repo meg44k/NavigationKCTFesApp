@@ -2,9 +2,9 @@
 import Image from "next/image";
 
 import {useState, useEffect} from 'react';
-import { defTeam, band, team2} from '@/features/Teams';
-import {day1, day2} from '@/features/Lives';
-import Header from "@/features/header";
+import { defTeam, band, team2} from '@/app/components/Teams';
+import {day1, day2} from '@/app/components/Lives';
+import Header from "@/app/components/header";
 
 function CurrentLive({live,setTeam,showDetail}:{live:{name:string,startTime:string},setTeam: () => void,showDetail: () => void}) {
     const setDetail = () => {
