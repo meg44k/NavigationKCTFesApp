@@ -34,7 +34,7 @@ export default function Header() {
                 </div>
                 <div className="flex justify-stretch lg:w-1/2 iPhoneSE:w-3/5 w-56">
                     <div className="mr-4">
-                        <a className={`${NotoSansJPFont.className} mr-2`} href="./">出し物一覧</a>
+                        <a className={`${NotoSansJPFont.className} mr-2`} href="./intro">出し物一覧</a>
                         <a className={`${NotoSansJPFont.className} mx-2`} href="./">ライブナビ</a>
                     </div>
                     <div>
