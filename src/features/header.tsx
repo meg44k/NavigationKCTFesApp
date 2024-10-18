@@ -24,7 +24,7 @@ export default function Header() {
     }
     return(
         <>
-            <header className="absolute flex items-center justify-between top-0 left-0 right-0 z-10 border-b-2 border-white text-white p-4 bg-kct-black">
+            <header className="absolute flex items-center justify-between top-0 left-0 right-0 z-50 border-b-2 border-white text-white p-4 bg-kct-black">
                 <div className={`${TrainOneFont.className} text-2xl font-bold`}>
                     <a href="./main">
                         <span className="text-kct-yellow">高</span>
@@ -35,7 +35,7 @@ export default function Header() {
                 <div className="flex justify-stretch lg:w-1/2 iPhoneSE:w-3/5 w-56">
                     <div className="mr-4">
                         <a className={`${NotoSansJPFont.className} mr-2`} href="./intro">出し物一覧</a>
-                        <a className={`${NotoSansJPFont.className} mx-2`} href="./">ライブナビ</a>
+                        <a className={`${NotoSansJPFont.className} mx-2`} href="./livenav">ライブナビ</a>
                     </div>
                     <div>
                         <button
@@ -59,7 +59,7 @@ export default function Header() {
                     <div></div>
                 ) : (
                     <>
-                        <div className="absolute border-l-2 border-white right-0 md:w-1/4 w-1/3 h-screen backdrop-blur-sm bg-black/20">
+                        <div className="absolute border-l-2 border-white right-0 md:w-1/4 w-1/3 h-screen backdrop-blur-sm bg-black/20 z-40">
                             <div className="pt-20">
                                 <ClassList grade={1}/>
                                 <ClassList grade={2}/>
