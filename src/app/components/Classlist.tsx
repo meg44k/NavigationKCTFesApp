@@ -40,11 +40,11 @@ export default function ClassList({ grade }: ClassListProps) {
             onChange={handleSelectOption}
             onFocus={() => setArrowActive(true)}
             onBlur={() => setArrowActive(false)}
-            className="w-3/5 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 bg-white bg-opacity-0 border-white border-y focus:outline-none focus:ring-2 text-white"
           >
-            <option value="" className="w-3/5">{grade}年生</option>
+            <option value="" className="w-full">{grade}年生</option>
             {options.map((option) => (
-              <option key={option.value} value={option.value} className="w-3/5">
+              <option key={option.value} value={option.value} className="w-full">
                 {option.label}
               </option>
             ))}

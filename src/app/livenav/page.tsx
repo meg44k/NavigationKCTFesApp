@@ -2,8 +2,9 @@
 import Image from "next/image";
 
 import {useState, useEffect} from 'react';
-import { defTeam, band, team2} from '@/features/Teams';
-import {day1, day2} from '@/features/Lives';
+import { defTeam, band, team2} from '@/app/components/Teams';
+import {day1, day2} from '@/app/components/Lives';
+import Header from "@/app/components/header";
 
 function CurrentLive({live,setTeam,showDetail}:{live:{name:string,startTime:string},setTeam: () => void,showDetail: () => void}) {
     const setDetail = () => {
@@ -93,11 +94,12 @@ export default function Home(){
 
     return (
         <>
+            <Header />
             <div className="bg-yellow-400 absolute w-full min-h-full overflow-hidden z-5">
                 <div> 
                     {detailIsVisible && <LiveDetail team={team} hideDetail={() => setDetailIsVisible(false)}/>}
                 </div>
-                <div className='ml-2 mt-16'>※当日の時間変更には対応していません</div>
+                <div className='ml-2 mt-20'>※当日の時間変更には対応していません</div>
                 <div className='ml-2'>※表示の切り替えが少し遅れる場合があります</div>
                 <div className="font-semibold text-2xl px-5 py-5"> 
                     今行われているライブ

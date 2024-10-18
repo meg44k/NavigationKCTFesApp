@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from "@/features/header";
-import BackSquare from '@/features/ui/square';
+import Header from "@/app/components/header";
+import BackSquare from '@/app/components/ui/square';
 import {Train_One} from "next/font/google"
 
 const TrainOneFont = Train_One({
