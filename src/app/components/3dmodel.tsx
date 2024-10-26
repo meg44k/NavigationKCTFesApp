@@ -23,7 +23,6 @@ function Modelcanvas() {
         //--------------3D空間を扱うための設定--------------------------
         const width = window.innerWidth;
         const height = window.innerHeight;
-
         const canvas = document.querySelector('#myCanvas') as HTMLCanvasElement | null;
 
         if (!canvas) {
@@ -48,7 +47,11 @@ function Modelcanvas() {
         const controls = new OrbitControls(camera, document.body);
         controls.minPolarAngle = Math.PI / 4; // 最小の垂直角度 (45度)
         controls.maxPolarAngle = Math.PI / 2; // 最大の垂直角度 (90度)
+        controls.maxDistance = 200; //最大ズームアウト半径
+        controls.minDistance = 10;  //最大ズームイン半径
+
         // カメラの位置を制限するための関数
+
         controls.addEventListener('change', () => {
             if (camera.position.y < 0) {
                 camera.position.y = 0;
