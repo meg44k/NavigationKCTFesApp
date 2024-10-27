@@ -1,7 +1,7 @@
 export const day1 = {
     brassBand : {
         name : 'ブラスバンド',
-        date : '2',
+        date : '27',
         startTime : '9:50',
         startTimeInt : 950,
         endTime : '10:20',
@@ -11,7 +11,7 @@ export const day1 = {
 
     live1 : {
         name : 'ライブ１',
-        date : '2',
+        date : '27',
         startTime : '10:30',
         startTimeInt : 1030,
         endTime : '12:00',
@@ -27,7 +27,7 @@ export const day1 = {
     
     nOne : {
         name : 'N-1',
-        date : '2',
+        date : '27',
         startTime : '12:10',
         startTimeInt : 1210,
         endTime : '12:45',
@@ -37,7 +37,7 @@ export const day1 = {
 
     calm1 : {
         name : '癒し系1',
-        date : '2',
+        date : '27',
         startTime : '12:55',
         startTimeInt : 1255,
         endTime : '13:15',
@@ -51,7 +51,7 @@ export const day1 = {
 
     calm2 :{
         name : '癒し系2',
-        date : '2',
+        date : '27',
         startTime : '13:25',
         startTimeInt : 1325,
         endTime : '13:45',
@@ -65,7 +65,7 @@ export const day1 = {
 
     calm3 : {
         name : '癒し系3',
-        date : '2',
+        date : '27',
         startTime : '13:55',
         startTimeInt : 1355, 
         endTime : '14:15',
@@ -79,7 +79,7 @@ export const day1 = {
 
     marioKart : {
         name : 'マリオカート',
-        date : '2',
+        date : '27',
         startTime : '14:25',
         startTimeInt : 1425,
         endTime : '14:45',
@@ -89,7 +89,7 @@ export const day1 = {
 
     live2 : {
         name : 'ライブ2',
-        date : '2',
+        date : '27',
         startTime : '14:55',
         startTimeInt : 1455,
         endTime : '16:25',
@@ -105,7 +105,7 @@ export const day1 = {
 
     lottery : {
         name :'大抽選会',
-        date : '2',
+        date : '27',
         startTime : '16:35',
         startTimeInt : 1635,
         endTime : '17:35',

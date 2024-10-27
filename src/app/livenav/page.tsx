@@ -43,7 +43,7 @@ function LiveDetail({team,hideDetail}:{team:{name:string,startTime:string,teams:
                     <div className="flex border-b border-black justify-between mx-3">
                         <div className="font-semibold py-2 text-2xl inline">{team.name}</div>
                         <button  type="button" onClick={hideDetail} className="w-6 h-6 pt-3">
-                            <Image src="/BlackCross.svg" alt="Icon"/>
+                            <img src="/BlackCross.svg" alt="Icon"/>
                         </button>
                     </div>
                     <div className="font-semibold py-2 pl-3 pr-28 text-2xl">出場チーム</div>
