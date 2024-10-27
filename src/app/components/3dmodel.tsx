@@ -139,7 +139,7 @@ function Modelcanvas() {
         // シーンに追加
         scene.add(bubbleMesh);
         bubbleMesh.position.set(0,30,0);
-
+        
         //--------------font.jsonファイルの読み込み--------------------------
         const fontLoader = new FontLoader();
         fontLoader.load('/fonts/NotoSansJPRegular.json', (font) => {
@@ -254,7 +254,7 @@ function Modelcanvas() {
                     object.lookAt(camera.position);
                 }
             });
-
+            bubbleMesh.lookAt(camera.position);
             renderer.render(scene, camera);
         }
         tick();
