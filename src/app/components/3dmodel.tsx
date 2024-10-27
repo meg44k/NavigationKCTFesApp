@@ -151,10 +151,10 @@ function Modelcanvas() {
         scene.add(marker);
         
         const updatePosition = (latitude: number, longitude: number) => {
-            const ZEROPOINT : Position = {latitude: 33.816035, longitude: 130.871963};
-            const SCALE_FACTOR : number = 10000;
-            const SCALE_VALUE_X: number = -2;//経度1あたり3Dモデル座標が2動く
-            const SCALE_VALUE_Z: number = -3.9//緯度1あたり3Dモデルが3.9動く
+            const ZEROPOINT : Position = {latitude: 33.816102, longitude: 130.872012};
+            const SCALE_FACTOR : number = 100000;
+            const SCALE_VALUE_X: number = 0.06702;//経度1あたり3Dモデル座標が2動く
+            const SCALE_VALUE_Z: number = 0.013309//緯度1あたり3Dモデルが3.9動く
             //3Dモデルの原点
             // 33.816432,130.871320 最終桁は停止時でも+-3程度変動
             // 小数点以下5桁目で計算する
@@ -168,7 +168,7 @@ function Modelcanvas() {
             const MarkerPosZ: number = ScaledLatitude * SCALE_VALUE_Z; 
 
 
-            marker.position.set(MarkerPosX, 5, MarkerPosZ);
+            marker.position.set(MarkerPosX, 10, MarkerPosZ);
         };
 
         //---------------自分の位置を取得--------------------------------------
@@ -210,7 +210,6 @@ function Modelcanvas() {
                     object.lookAt(camera.position);
                 }
             });
-
             renderer.render(scene, camera);
         }
         tick();
