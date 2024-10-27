@@ -147,24 +147,28 @@ function Modelcanvas() {
         //--------------現在地のマーカーを表示--------------------------------
         const markerGeometry = new THREE.SphereGeometry(0.5, 32, 32);
         const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-        const LARGE_NUM : number = 10000;
         const marker = new THREE.Mesh(markerGeometry, markerMaterial);
         scene.add(marker);
+        
         const updatePosition = (latitude: number, longitude: number) => {
-
+            const ZEROPOINT : Position = {latitude: 33.816035, longitude: 130.871963};
+            const SCALE_FACTOR : number = 10000;
+            const SCALE_VALUE_X: number = 2;//経度1あたり3Dモデル座標が2動く
+            const SCALE_VALUE_Z: number = 3.9//緯度1あたり3Dモデルが3.9動く
             //3Dモデルの原点
-            const zeroPoint : Position = {latitude: 33.816035, longitude: 130.87196};
-
             // 33.816432,130.871320 最終桁は停止時でも+-3程度変動
             // 小数点以下5桁目で計算する
             //33.81603 - 33.81643 = -0.0004 * 10000 = -4
             //130.87196 - 130.87132 = 0.00064 * 10000 = 6.4　８0m
 
-            const markX = (latitude  * LARGE_NUM) - (zeroPoint.latitude * LARGE_NUM);//ここをマイナスすると、上にマーカーが移動
-            console.log(markX);
-            const markZ = (longitude  * LARGE_NUM) - (zeroPoint.longitude * LARGE_NUM);//ここをマイナスすると、右にマーカーが移動
-            console.log(markZ);
-            marker.position.set(markX, 5, markZ);
+            const ScaledLatitude: number  = (latitude  * SCALE_FACTOR) - (ZEROPOINT.latitude * SCALE_FACTOR);//ここをマイナスすると、上にマーカーが移動
+            const ScaledLongitude: number = (longitude  * SCALE_FACTOR) - (ZEROPOINT.longitude * SCALE_FACTOR);//ここをマイナスすると、右にマーカーが移動
+
+            const MarkerPosX: number = ScaledLongitude * SCALE_VALUE_X;
+            const MarkerPosZ: number = ScaledLatitude * SCALE_VALUE_Z; 
+
+
+            marker.position.set(MarkerPosX, 5, MarkerPosZ);
         };
 
         //---------------自分の位置を取得--------------------------------------
