@@ -51,7 +51,6 @@ function Modelcanvas() {
         controls.minDistance = 10;  //最大ズームイン半径
 
         // カメラの位置を制限するための関数
-
         controls.addEventListener('change', () => {
             if (camera.position.y < 0) {
                 camera.position.y = 0;
@@ -96,6 +95,50 @@ function Modelcanvas() {
                         });
             },
         );
+
+        // 吹き出しの形状を定義
+        const createRoundedRectangleSpeechBubble = () => {
+            const shape = new THREE.Shape();
+            const width = 7.5;   // 吹き出しの幅
+            const height = 4.5;  // 吹き出しの高さ
+            const radius = 0.9;  // 角の丸みの半径
+        
+            // 長方形の輪郭を作成
+            shape.moveTo(-width / 2 + radius, height / 2); // 上辺左
+            shape.lineTo(width / 2 - radius, height / 2);  // 上辺右
+            shape.quadraticCurveTo(width / 2, height / 2, width / 2, height / 2 - radius); // 右上カーブ
+        
+            shape.lineTo(width / 2, -height / 2 + radius); // 右辺下
+            shape.quadraticCurveTo(width / 2, -height / 2, width / 2 - radius, -height / 2); // 右下カーブ
+        
+            shape.lineTo(width / 2 - radius, -height / 2); // 下辺右
+            shape.lineTo(0.2, -height / 2);  // 吹き出し下辺中央左端まで移動
+        
+            // 吹き出しの尾を描画（下辺の真ん中）
+            shape.lineTo(0, -height / 1.5 - 0.5);  // 尾の先端
+            shape.lineTo(-0.2, -height / 2);     // 吹き出し下辺中央右端
+        
+            shape.lineTo(-width / 2 + radius, -height / 2); // 下辺左
+            shape.quadraticCurveTo(-width / 2, -height / 2, -width / 2, -height / 2 + radius); // 左下カーブ
+        
+            shape.lineTo(-width / 2, height / 2 - radius); // 左辺上
+            shape.quadraticCurveTo(-width / 2, height / 2, -width / 2 + radius, height / 2); // 左上カーブ
+        
+            return shape;
+        };
+        
+        const bubbleShape = createRoundedRectangleSpeechBubble();
+        const extrudeSettings = {
+            depth: 0.2,   // 厚み
+            bevelEnabled: false
+        };
+        const bubbleGeometry = new THREE.ExtrudeGeometry(bubbleShape, extrudeSettings);
+        const bubbleMaterial = new THREE.MeshBasicMaterial({ color: 0x00aaff, side: THREE.DoubleSide });
+        const bubbleMesh = new THREE.Mesh(bubbleGeometry, bubbleMaterial);
+        
+        // シーンに追加
+        scene.add(bubbleMesh);
+        bubbleMesh.position.set(0,30,0);
 
         //--------------font.jsonファイルの読み込み--------------------------
         const fontLoader = new FontLoader();
@@ -148,53 +191,57 @@ function Modelcanvas() {
         //--------------現在地のマーカーを表示--------------------------------
         const markerGeometry = new THREE.SphereGeometry(0.5, 32, 32);
         const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-        const LARGE_NUM : number = 10000;
         const marker = new THREE.Mesh(markerGeometry, markerMaterial);
         scene.add(marker);
+        
         const updatePosition = (latitude: number, longitude: number) => {
-
+            const ZEROPOINT : Position = {latitude: 33.816035, longitude: 130.871963};
+            const SCALE_FACTOR : number = 10000;
+            const SCALE_VALUE_X: number = -2;//経度1あたり3Dモデル座標が2動く
+            const SCALE_VALUE_Z: number = 3.9//緯度1あたり3Dモデルが3.9動く
             //3Dモデルの原点
-            const zeroPoint : Position = {latitude: 33.816035, longitude: 130.87196};
-
             // 33.816432,130.871320 最終桁は停止時でも+-3程度変動
             // 小数点以下5桁目で計算する
             //33.81603 - 33.81643 = -0.0004 * 10000 = -4
             //130.87196 - 130.87132 = 0.00064 * 10000 = 6.4　８0m
 
-            const markX = (latitude  * LARGE_NUM) - (zeroPoint.latitude * LARGE_NUM);//ここをマイナスすると、上にマーカーが移動
-            console.log(markX);
-            const markZ = (longitude  * LARGE_NUM) - (zeroPoint.longitude * LARGE_NUM);//ここをマイナスすると、右にマーカーが移動
-            console.log(markZ);
-            marker.position.set(markX, 5, markZ);
+            const ScaledLatitude: number  = (latitude  * SCALE_FACTOR) - (ZEROPOINT.latitude * SCALE_FACTOR);//ここをマイナスすると、上にマーカーが移動
+            const ScaledLongitude: number = (longitude  * SCALE_FACTOR) - (ZEROPOINT.longitude * SCALE_FACTOR);//ここをマイナスすると、右にマーカーが移動
+
+            const MarkerPosX: number = ScaledLongitude * SCALE_VALUE_X;
+            const MarkerPosZ: number = ScaledLatitude * SCALE_VALUE_Z; 
+
+
+            marker.position.set(MarkerPosX, 5, MarkerPosZ);
         };
 
         //---------------自分の位置を取得--------------------------------------
-        // const watchPosition = () => {
-        //     if ('geolocation' in navigator) {
-        //         navigator.geolocation.watchPosition(
-        //             (pos) => {
-        //                 const newPosition = {
-        //                     latitude: pos.coords.latitude,
-        //                     longitude: pos.coords.longitude,
-        //                 };
-        //                 setPosition(newPosition);
-        //                 updatePosition(newPosition.latitude, newPosition.longitude);
-        //             },
-        //             (err) => {
-        //                 setError(`エラー: ${err.message}`);
-        //             },
-        //             {
-        //                 enableHighAccuracy: true,
-        //                 timeout: 5000,
-        //                 maximumAge: 0,
-        //             }
-        //         );
-        //     } else {
-        //         setError('Geolocation APIがサポートされていません。');
-        //     }
-        // };
+        const watchPosition = () => {
+            if ('geolocation' in navigator) {
+                navigator.geolocation.watchPosition(
+                    (pos) => {
+                        const newPosition = {
+                            latitude: pos.coords.latitude,
+                            longitude: pos.coords.longitude,
+                        };
+                        setPosition(newPosition);
+                        updatePosition(newPosition.latitude, newPosition.longitude);
+                    },
+                    (err) => {
+                        setError(`エラー: ${err.message}`);
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0,
+                    }
+                );
+            } else {
+                setError('Geolocation APIがサポートされていません。');
+            }
+        };
 
-        // watchPosition();
+        watchPosition();
 
         // -------------アニメーションの設定-----------------------------------
         function tick() {
@@ -226,7 +273,7 @@ function Modelcanvas() {
     return (
         <>
             <canvas id="myCanvas"></canvas>
-            {/* {position && (
+            {position && (
                 <div style={{
                     position: 'absolute',
                     top: '10px',
@@ -257,7 +304,7 @@ function Modelcanvas() {
                 }}>
                     {error}
                 </div>
-            )} */}
+            )}
         </>
     );
 }
