@@ -51,7 +51,6 @@ function Modelcanvas() {
         controls.minDistance = 10;  //最大ズームイン半径
 
         // カメラの位置を制限するための関数
-
         controls.addEventListener('change', () => {
             if (camera.position.y < 0) {
                 camera.position.y = 0;
@@ -169,32 +168,32 @@ function Modelcanvas() {
         };
 
         //---------------自分の位置を取得--------------------------------------
-        // const watchPosition = () => {
-        //     if ('geolocation' in navigator) {
-        //         navigator.geolocation.watchPosition(
-        //             (pos) => {
-        //                 const newPosition = {
-        //                     latitude: pos.coords.latitude,
-        //                     longitude: pos.coords.longitude,
-        //                 };
-        //                 setPosition(newPosition);
-        //                 updatePosition(newPosition.latitude, newPosition.longitude);
-        //             },
-        //             (err) => {
-        //                 setError(`エラー: ${err.message}`);
-        //             },
-        //             {
-        //                 enableHighAccuracy: true,
-        //                 timeout: 5000,
-        //                 maximumAge: 0,
-        //             }
-        //         );
-        //     } else {
-        //         setError('Geolocation APIがサポートされていません。');
-        //     }
-        // };
+        const watchPosition = () => {
+            if ('geolocation' in navigator) {
+                navigator.geolocation.watchPosition(
+                    (pos) => {
+                        const newPosition = {
+                            latitude: pos.coords.latitude,
+                            longitude: pos.coords.longitude,
+                        };
+                        setPosition(newPosition);
+                        updatePosition(newPosition.latitude, newPosition.longitude);
+                    },
+                    (err) => {
+                        setError(`エラー: ${err.message}`);
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0,
+                    }
+                );
+            } else {
+                setError('Geolocation APIがサポートされていません。');
+            }
+        };
 
-        // watchPosition();
+        watchPosition();
 
         // -------------アニメーションの設定-----------------------------------
         function tick() {
@@ -226,7 +225,7 @@ function Modelcanvas() {
     return (
         <>
             <canvas id="myCanvas"></canvas>
-            {/* {position && (
+            {position && (
                 <div style={{
                     position: 'absolute',
                     top: '10px',
@@ -257,7 +256,7 @@ function Modelcanvas() {
                 }}>
                     {error}
                 </div>
-            )} */}
+            )}
         </>
     );
 }
