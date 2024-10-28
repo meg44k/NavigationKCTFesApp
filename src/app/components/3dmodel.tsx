@@ -9,13 +9,14 @@ import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader.js';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
+import { showPerformPlace } from "./showPeformPlace";
 
 interface Position {
     latitude: number;//緯度
     longitude: number;//経度
 }
 
-function Modelcanvas() {
+function Modelcanvas(props:{PeformID?:number}) {
     const [position, setPosition] = useState<Position | null>(null);
     const [error, setError] = useState<string | null>(null);
 
@@ -30,18 +31,14 @@ function Modelcanvas() {
             return;
         }
 
-        // WebGLRendererの作成
-        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-        //  canvasのサイズを指定
-        renderer.setSize(width, height);
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true }); // WebGLRendererの作成
+        renderer.setSize(width, height); // canvasのサイズを指定
         document.body.appendChild(renderer.domElement);
 
-        //  シーンを作成、シーンは3D空間のこと
-        const scene = new THREE.Scene();
+        const scene = new THREE.Scene();// シーンを作成、シーンは3D空間のこと
         scene.background = new THREE.Color( 0x3B3D3D );
 
-        // カメラの作成 new THREE.PerspectiveCamera(画角, アスペクト比)
-        const camera = new THREE.PerspectiveCamera(45, width / height);
+        const camera = new THREE.PerspectiveCamera(45, width / height); // カメラの作成 new THREE.PerspectiveCamera(画角, アスペクト比)
         camera.position.set(-100, 100, 100);
 
         const controls = new OrbitControls(camera, document.body);
@@ -57,13 +54,11 @@ function Modelcanvas() {
             }
         });
 
-        // 環境光源を作成
-        const ambientLight = new THREE.AmbientLight(0xffffff);
+        const ambientLight = new THREE.AmbientLight(0xffffff);// 環境光源を作成
         ambientLight.intensity = 0.5;
         scene.add(ambientLight);
-
-        // 平行光源を作成
-        const directionalLight = new THREE.DirectionalLight(0xffffff);
+        
+        const directionalLight = new THREE.DirectionalLight(0xffffff);// 平行光源を作成
         directionalLight.intensity = 1;
         directionalLight.position.set(1, 3, 1);
         scene.add(directionalLight);
@@ -95,50 +90,6 @@ function Modelcanvas() {
                         });
             },
         );
-
-        // 吹き出しの形状を定義
-        const createRoundedRectangleSpeechBubble = () => {
-            const shape = new THREE.Shape();
-            const width = 7.5;   // 吹き出しの幅
-            const height = 4.5;  // 吹き出しの高さ
-            const radius = 0.9;  // 角の丸みの半径
-        
-            // 長方形の輪郭を作成
-            shape.moveTo(-width / 2 + radius, height / 2); // 上辺左
-            shape.lineTo(width / 2 - radius, height / 2);  // 上辺右
-            shape.quadraticCurveTo(width / 2, height / 2, width / 2, height / 2 - radius); // 右上カーブ
-        
-            shape.lineTo(width / 2, -height / 2 + radius); // 右辺下
-            shape.quadraticCurveTo(width / 2, -height / 2, width / 2 - radius, -height / 2); // 右下カーブ
-        
-            shape.lineTo(width / 2 - radius, -height / 2); // 下辺右
-            shape.lineTo(0.2, -height / 2);  // 吹き出し下辺中央左端まで移動
-        
-            // 吹き出しの尾を描画（下辺の真ん中）
-            shape.lineTo(0, -height / 1.5 - 0.5);  // 尾の先端
-            shape.lineTo(-0.2, -height / 2);     // 吹き出し下辺中央右端
-        
-            shape.lineTo(-width / 2 + radius, -height / 2); // 下辺左
-            shape.quadraticCurveTo(-width / 2, -height / 2, -width / 2, -height / 2 + radius); // 左下カーブ
-        
-            shape.lineTo(-width / 2, height / 2 - radius); // 左辺上
-            shape.quadraticCurveTo(-width / 2, height / 2, -width / 2 + radius, height / 2); // 左上カーブ
-        
-            return shape;
-        };
-        
-        const bubbleShape = createRoundedRectangleSpeechBubble();
-        const extrudeSettings = {
-            depth: 0.2,   // 厚み
-            bevelEnabled: false
-        };
-        const bubbleGeometry = new THREE.ExtrudeGeometry(bubbleShape, extrudeSettings);
-        const bubbleMaterial = new THREE.MeshBasicMaterial({ color: 0x00aaff, side: THREE.DoubleSide });
-        const bubbleMesh = new THREE.Mesh(bubbleGeometry, bubbleMaterial);
-        
-        // シーンに追加
-        scene.add(bubbleMesh);
-        bubbleMesh.position.set(0,30,0);
         
         //--------------font.jsonファイルの読み込み--------------------------
         const fontLoader = new FontLoader();
@@ -167,8 +118,7 @@ function Modelcanvas() {
                     textGeometry.boundingBox.getCenter(centerOffset);
                 }
 
-                // テキストメッシュをグループに追加し、ピボットポイントを調整
-                const textGroup = new THREE.Group();
+                const textGroup = new THREE.Group();// テキストメッシュをグループに追加し、ピボットポイントを調整
                 textMesh.position.sub(centerOffset);
                 textGroup.add(textMesh);
                 textGroup.position.copy(position);
@@ -187,6 +137,10 @@ function Modelcanvas() {
             createText('8号館', new THREE.Vector3(20, 15, -13));
             createText('ライブ会場', new THREE.Vector3(-40, 15, -40));
         });
+
+        //---------------選択されたクラスにズームインする-------------------------
+        
+        showPerformPlace(0,0,0,scene,camera);
 
         //--------------現在地のマーカーを表示--------------------------------
         const markerGeometry = new THREE.SphereGeometry(0.5, 32, 32);
@@ -254,7 +208,7 @@ function Modelcanvas() {
                     object.lookAt(camera.position);
                 }
             });
-            bubbleMesh.lookAt(camera.position);
+            // bubbleMesh.lookAt(camera.position);
             renderer.render(scene, camera);
         }
         tick();
