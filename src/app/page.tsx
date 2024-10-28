@@ -1,17 +1,6 @@
-import {Train_One} from "next/font/google"
-import {BIZ_UDMincho} from "next/font/google" 
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-
-const TrainOneFont = Train_One({
-    weight: "400",
-    subsets: ["latin"],
-  });;
-
-const BIZUDMinchoFont = BIZ_UDMincho({
-    weight: "400",
-    subsets: ["latin"],
-  });;
+import { TrainOneFont,BIZUDMinchoFont } from "../../utils/fonts";
 
 export default function Home() {
   return (
