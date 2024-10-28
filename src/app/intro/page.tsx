@@ -2,6 +2,10 @@ import React from 'react';
 import Header from "@/app/components/header";
 import BackSquare from '@/app/components/ui/square';
 import {Train_One} from "next/font/google"
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
+
 
 const TrainOneFont = Train_One({
     weight: "400",
@@ -11,6 +15,8 @@ const TrainOneFont = Train_One({
 export default function Introduction() {
     return(
         <>
+            <Analytics/>
+            <SpeedInsights />
             <Header></Header>
             <div className='main justify-center flex flex-wrap pt-[70px] pb-[40px] bg-kct-black'>
                 <h1 className={`${TrainOneFont.className} year text-4xl w-full p-[2%] text-white`}>1年生</h1>

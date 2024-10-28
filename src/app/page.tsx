@@ -1,5 +1,7 @@
 import {Train_One} from "next/font/google"
 import {BIZ_UDMincho} from "next/font/google" 
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const TrainOneFont = Train_One({
     weight: "400",
@@ -14,6 +16,8 @@ const BIZUDMinchoFont = BIZ_UDMincho({
 export default function Home() {
   return (
     <>
+      <Analytics />
+      <SpeedInsights />
       <a href="./main">
         <div className="grid w-screen h-screen bg-kct-black place-content-center ">
           <div className="w-80 h-44 border-y-2 border-white py-4 m-10">
