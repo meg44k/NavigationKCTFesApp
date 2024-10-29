@@ -100,7 +100,7 @@ export default function Home(){
         <>
             {/* <Analytics />
             <SpeedInsights /> */}
-            <div className="z-50">
+            <div>
                 <Header />
             </div>
             
