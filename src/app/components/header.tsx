@@ -2,18 +2,37 @@
 
 import React, { useState } from "react";
 
-import { TrainOneFont,NotoSansJPFont } from "../../../utils/fonts";
+import {Train_One} from "next/font/google"
+import { Noto_Sans_JP } from "next/font/google";
 
+import HamMenu from "./hamMenu";
 
-import ClassList from "./Classlist";
+const TrainOneFont = Train_One({
+    weight: "400",
+    subsets: ["latin"],
+  });;
 
-
+  const NotoSansJPFont = Noto_Sans_JP({
+    weight: "400",
+    subsets: ["latin"],
+  });;
 
 export default function Header() {
     const [clicked, setClicked] = useState(true);
     const hamClicked = () => {
     setClicked(!clicked);
     }
+    const [hamFirst, setHamFirst] = useState(true);
+    const doNotFirst = () => {
+        if (hamFirst == true){
+            setHamFirst(!hamFirst)
+        }
+    }
+    const hamMenuFanc = () => {
+        hamClicked()
+        doNotFirst()
+    }
+
     return(
         <>
             <header className="absolute flex items-center justify-between top-0 left-0 right-0 z-50 border-b-2 border-white text-white p-4 bg-kct-black">
@@ -34,7 +53,7 @@ export default function Header() {
                         id="button"
                         type="button"
                         className="fixed right-6 z-10 ml-4"
-                        onClick={hamClicked}
+                        onClick={hamMenuFanc}
                         >
                         {clicked ? (
                             <img className="w-6 h-6" src="./HamburgerBar.svg" alt="" />
@@ -48,17 +67,20 @@ export default function Header() {
                 </div>
             </header>
             {clicked ? (
-                    <div></div>
+                hamFirst ? (
+                    <></>
+                    ):(
+                        <>
+                            <div className="animate-scale-down-hor-right">
+                                <HamMenu/>
+                            </div>
+                        </>
+                    )
+                        
                 ) : (
                     <>
-                        <div className="absolute border-l-2 border-white right-0 md:w-1/4 w-1/3 h-screen backdrop-blur-sm bg-black/20 z-40">
-                            <div className="pt-20">
-                                <ClassList grade={1}/>
-                                <ClassList grade={2}/>
-                                <ClassList grade={3}/>
-                                <ClassList grade={4}/>
-                                <ClassList grade={5}/>
-                            </div>
+                        <div className="animate-scale-up-hor-right">
+                            <HamMenu/>
                         </div>
                     </>
                 )}

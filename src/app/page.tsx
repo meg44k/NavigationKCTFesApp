@@ -1,12 +1,12 @@
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+// import { Analytics } from '@vercel/analytics/react';
+// import { SpeedInsights } from '@vercel/speed-insights/next';
 import { TrainOneFont,BIZUDMinchoFont } from "../../utils/fonts";
 
 export default function Home() {
   return (
     <>
-      <Analytics />
-      <SpeedInsights />
+      {/* <Analytics />
+      <SpeedInsights /> */}
       <a href="./main">
         <div className="grid w-screen h-screen bg-kct-black place-content-center ">
           <div className="w-80 h-44 border-y-2 border-white py-4 m-10">
