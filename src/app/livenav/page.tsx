@@ -100,7 +100,10 @@ export default function Home(){
         <>
             <Analytics />
             <SpeedInsights />
-            <Header />
+            <div>
+                <Header />
+            </div>
+            
             <div className="bg-yellow-400 absolute w-full min-h-full overflow-hidden z-5">
                 <div> 
                     {detailIsVisible && <LiveDetail team={team} hideDetail={() => setDetailIsVisible(false)}/>}

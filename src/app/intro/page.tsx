@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from "@/app/components/header";
 import BackSquare from '@/app/components/ui/square';
-import { TrainOneFont } from '../../../utils/fonts';
+import {TrainOneFont} from "@/../utils/fonts";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 

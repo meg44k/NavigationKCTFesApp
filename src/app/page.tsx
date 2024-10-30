@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { TrainOneFont,BIZUDMinchoFont } from "../../utils/fonts";
+import { TrainOneFont,BIZUDMinchoFont } from "@/../utils/fonts";
 
 export default function Home() {
   return (
