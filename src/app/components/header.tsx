@@ -2,20 +2,12 @@
 
 import React, { useState } from "react";
 
-import {Train_One} from "next/font/google"
-import { Noto_Sans_JP } from "next/font/google";
+import { TrainOneFont,NotoSansJPFont } from "../../../utils/fonts";
+
 
 import ClassList from "./Classlist";
 
-const TrainOneFont = Train_One({
-    weight: "400",
-    subsets: ["latin"],
-  });;
 
-  const NotoSansJPFont = Noto_Sans_JP({
-    weight: "400",
-    subsets: ["latin"],
-  });;
 
 export default function Header() {
     const [clicked, setClicked] = useState(true);

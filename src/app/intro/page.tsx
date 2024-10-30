@@ -1,16 +1,9 @@
 import React from 'react';
 import Header from "@/app/components/header";
 import BackSquare from '@/app/components/ui/square';
-import {Train_One} from "next/font/google"
+import { TrainOneFont } from '../../../utils/fonts';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-
-
-
-const TrainOneFont = Train_One({
-    weight: "400",
-    subsets: ["latin"],
-  });;
 
 export default function Introduction() {
     return(
