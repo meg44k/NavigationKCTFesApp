@@ -9,21 +9,33 @@ import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader.js';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
-import { showPerformPlace } from "./showPeformPlace";
 
 interface Position {
     latitude: number;//緯度
     longitude: number;//経度
 }
+let width: number;
+let height: number;
 
-function Modelcanvas(props:{PeformID?:number}) {
+if (typeof window !== "undefined") {
+    width = window.innerWidth;
+    height = window.innerHeight;
+} else {
+    // サーバーサイドでの初期値を設定
+    width = 800; // 任意のデフォルト値
+    height = 600; 
+}
+
+export const scene = new THREE.Scene();// シーンを作成、シーンは3D空間のこと
+export const camera = new THREE.PerspectiveCamera(45, width / height); // カメラの作成 new THREE.PerspectiveCamera(画角, アスペクト比)
+
+
+function Modelcanvas() {
     const [position, setPosition] = useState<Position | null>(null);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         //--------------3D空間を扱うための設定--------------------------
-        const width = window.innerWidth;
-        const height = window.innerHeight;
         const canvas = document.querySelector('#myCanvas') as HTMLCanvasElement | null;
 
         if (!canvas) {
@@ -35,10 +47,8 @@ function Modelcanvas(props:{PeformID?:number}) {
         renderer.setSize(width, height); // canvasのサイズを指定
         document.body.appendChild(renderer.domElement);
 
-        const scene = new THREE.Scene();// シーンを作成、シーンは3D空間のこと
         scene.background = new THREE.Color( 0x3B3D3D );
 
-        const camera = new THREE.PerspectiveCamera(45, width / height); // カメラの作成 new THREE.PerspectiveCamera(画角, アスペクト比)
         camera.position.set(-100, 100, 100);
 
         const controls = new OrbitControls(camera, document.body);
@@ -55,11 +65,11 @@ function Modelcanvas(props:{PeformID?:number}) {
         });
 
         const ambientLight = new THREE.AmbientLight(0xffffff);// 環境光源を作成
-        ambientLight.intensity = 0.5;
+        ambientLight.intensity = 0.4;
         scene.add(ambientLight);
         
         const directionalLight = new THREE.DirectionalLight(0xffffff);// 平行光源を作成
-        directionalLight.intensity = 1;
+        directionalLight.intensity = 0.6;
         directionalLight.position.set(1, 3, 1);
         scene.add(directionalLight);
 
@@ -140,7 +150,6 @@ function Modelcanvas(props:{PeformID?:number}) {
 
         //---------------選択されたクラスにズームインする-------------------------
         
-        showPerformPlace(0,0,0,scene,camera);
 
         //--------------現在地のマーカーを表示--------------------------------
         const markerGeometry = new THREE.SphereGeometry(0.5, 32, 32);
