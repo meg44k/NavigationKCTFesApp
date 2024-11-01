@@ -47,7 +47,7 @@ function LiveDetail({team,hideDetail}:{team:{name:string,startTime:string,teams:
                     <div className="flex border-b border-black justify-between mx-3">
                         <div className="font-semibold py-2 text-2xl inline">{team.name}</div>
                         <button  type="button" onClick={hideDetail} className="w-6 h-6 pt-3">
-                            <Image src="/BlackCross.svg" alt="Icon"/>
+                            <img src="/BlackCross.svg" alt="Icon"/>
                         </button>
                     </div>
                     <div className="font-semibold py-2 pl-3 pr-28 text-2xl">出場チーム</div>
@@ -68,7 +68,7 @@ function LiveDetail({team,hideDetail}:{team:{name:string,startTime:string,teams:
 export default function Home(){
     const [detailIsVisible, setDetailIsVisible] = useState(false);
     // const [liveIsVisible,setLiveIsVisible] = useState(false);
-    const [team,setTeam] = useState(day1.brassBand);
+    const [team,setTeam] = useState(day1.live1);
     const [currentTime,setCurrentTime] = useState(new Date());
 
     useEffect (() => {
@@ -100,11 +100,11 @@ export default function Home(){
         <>
             <Analytics />
             <SpeedInsights />
-            <div>
+            <div className="z-50">
                 <Header />
             </div>
             
-            <div className="bg-yellow-400 absolute w-full min-h-full overflow-hidden z-5">
+            <div className="bg-yellow-400 absolute w-full min-h-full overflow-hidden z-0">
                 <div> 
                     {detailIsVisible && <LiveDetail team={team} hideDetail={() => setDetailIsVisible(false)}/>}
                 </div>
@@ -114,15 +114,15 @@ export default function Home(){
                     今行われているライブ
                 </div>
                 {/* 1日目 */}
-                {isCurrentLiveVisible(day1.brassBand.startTimeInt,day1.brassBand.endTimeInt,day1.brassBand.date) && (
+                {/* {isCurrentLiveVisible(day1.brassBand.startTimeInt,day1.brassBand.endTimeInt,day1.brassBand.date) && (
                     <CurrentLive live = {day1.brassBand} setTeam={() => setTeam(day1.brassBand)} showDetail={() => setDetailIsVisible(true)} />
-                )}
+                )} */}
                 {isCurrentLiveVisible(day1.live1.startTimeInt,day1.live1.endTimeInt,day1.live1.date) && (
                     <CurrentLive live = {day1.live1} setTeam={() => setTeam(day1.live1)} showDetail={() => setDetailIsVisible(true)} />
                 )}
-                {isCurrentLiveVisible(day1.nOne.startTimeInt,day1.nOne.endTimeInt,day1.nOne.date) && (
+                {/* {isCurrentLiveVisible(day1.nOne.startTimeInt,day1.nOne.endTimeInt,day1.nOne.date) && (
                     <CurrentLive live = {day1.nOne} setTeam={() => setTeam(day1.nOne)} showDetail={() => setDetailIsVisible(true)} />
-                )}
+                )} */}
                 {isCurrentLiveVisible(day1.calm1.startTimeInt,day1.calm1.endTimeInt,day1.calm1.date) && (
                     <CurrentLive live = {day1.calm1} setTeam={() => setTeam(day1.calm1)} showDetail={() => setDetailIsVisible(true)} />
                 )}
@@ -132,9 +132,9 @@ export default function Home(){
                 {isCurrentLiveVisible(day1.calm3.startTimeInt,day1.calm3.endTimeInt,day1.calm3.date) && (
                     <CurrentLive live = {day1.calm3} setTeam={() => setTeam(day1.calm3)} showDetail={() => setDetailIsVisible(true)} />
                 )}
-                {isCurrentLiveVisible(day1.marioKart.startTimeInt,day1.marioKart.endTimeInt,day1.marioKart.date) && (
+                {/* {isCurrentLiveVisible(day1.marioKart.startTimeInt,day1.marioKart.endTimeInt,day1.marioKart.date) && (
                     <CurrentLive live = {day1.marioKart} setTeam={() => setTeam(day1.marioKart)} showDetail={() => setDetailIsVisible(true)} />
-                )}
+                )} */}
                 {isCurrentLiveVisible(day1.live2.startTimeInt,day1.live2.endTimeInt,day1.live2.date) && (
                     <CurrentLive live = {day1.live2} setTeam={() => setTeam(day1.live2)} showDetail={() => setDetailIsVisible(true)} />
                 )}
@@ -162,15 +162,15 @@ export default function Home(){
                     スケジュール
                 </div>
                 {/* 1日目 */}
-                {isScheduleVisible(day1.brassBand.startTimeInt,day1.brassBand.date) && (
+                {/* {isScheduleVisible(day1.brassBand.startTimeInt,day1.brassBand.date) && (
                     <Schedule live = {day1.brassBand} setTeam={() => setTeam(day1.brassBand)} showDetail={() => setDetailIsVisible(true)} />
-                )}
+                )} */}
                 {isScheduleVisible(day1.live1.startTimeInt,day1.live1.date) && (
                     <Schedule live = {day1.live1} setTeam={() => setTeam(day1.live1)} showDetail={() => setDetailIsVisible(true)} />
                 )}
-                {isScheduleVisible(day1.nOne.startTimeInt,day1.nOne.date) && (
+                {/* {isScheduleVisible(day1.nOne.startTimeInt,day1.nOne.date) && (
                     <Schedule live = {day1.nOne} setTeam={() => setTeam(day1.nOne)} showDetail={() => setDetailIsVisible(true)} />
-                )}
+                )} */}
                 {isScheduleVisible(day1.calm1.startTimeInt,day1.calm1.date) && (
                     <Schedule live = {day1.calm1} setTeam={() => setTeam(day1.calm1)} showDetail={() => setDetailIsVisible(true)} />
                 )}
@@ -180,9 +180,9 @@ export default function Home(){
                 {isScheduleVisible(day1.calm3.startTimeInt,day1.calm3.date) && (
                     <Schedule live = {day1.calm3} setTeam={() => setTeam(day1.calm3)} showDetail={() => setDetailIsVisible(true)} />
                 )}
-                {isScheduleVisible(day1.marioKart.startTimeInt,day1.marioKart.date) && (
+                {/* {isScheduleVisible(day1.marioKart.startTimeInt,day1.marioKart.date) && (
                     <Schedule live = {day1.marioKart} setTeam={() => setTeam(day1.marioKart)} showDetail={() => setDetailIsVisible(true)} />
-                )}
+                )} */}
                 {isScheduleVisible(day1.live2.startTimeInt,day1.live2.date) && (
                     <Schedule live = {day1.live2} setTeam={() => setTeam(day1.live2)} showDetail={() => setDetailIsVisible(true)} />
                 )}

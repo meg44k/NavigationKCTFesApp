@@ -41,18 +41,18 @@ export default function Header() {
                         </div>
                         <div>
                             <button
-                            id="button"
-                            type="button"
-                            className="fixed right-6 z-10 ml-4"
-                            onClick={hamMenuFanc}
-                            >
-                            {clicked ? (
-                                <img className="w-6 h-6" src="./HamburgerBar.svg" alt="" />
+                                id="button"
+                                type="button"
+                                className="fixed right-6 z-10 ml-4"
+                                onClick={hamMenuFanc}
+                                >
+                                {clicked ? (
+                                    <img className="w-6 h-6" src="./HamburgerBar.svg" alt="" />
 
-                            ) : (
-                                <img className="w-6 h-6" src="./cross.svg" alt="" />
+                                ) : (
+                                    <img className="w-6 h-6" src="./cross.svg" alt="" />
 
-                            )}
+                                )}
                             </button>
                         </div>
                     </div>

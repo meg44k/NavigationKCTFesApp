@@ -68,7 +68,7 @@ export default function Introduction() {
                     BGColor='border-white'
                     Class="2-2"
                     Title="カジノ"
-                    Intro="2-2 様々なカジノゲームで遊びます"
+                    Intro="様々なカジノゲームで遊びます"
                     gradeNum={2}
                     classNum={2}
                 />
@@ -166,7 +166,7 @@ export default function Introduction() {
                     BGColor='border-kct-yellow'
                     Class="4-I(情報)"
                     Title="4Iプロコン"
-                    Intro="詳しくはこのQRコードをチェック！"
+                    Intro="プログラミングを用いた作品を展示しています！"
                     gradeNum={4}
                     classNum={4}
                 />
