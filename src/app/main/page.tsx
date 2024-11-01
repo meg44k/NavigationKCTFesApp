@@ -26,11 +26,11 @@ export default function Main() {
       </label>
       <Header></Header>
       {clicked ? (
-          <div className='flex flex-col bg-kct-black w-screen h-[2000px] p-2'>
-            <span className={`${ TrainOneFont.className } text-4xl mt-20 m-2 text-white`}>校内マップ</span>
+          <div className='flex flex-col bg-kct-black w-screen h-screen p-2 '>
+            <span className={`${ TrainOneFont.className } text-2xl mt-[72px] m-2 text-white object-none	`}>校内マップ</span>
             <img src="KCTFesMap.png" alt="KCTFesMap" className='mt-2'/>
-            <span className={`${ TrainOneFont.className } text-4xl mt-2 m-2 text-white`}>バザーマップ</span>
-            <img src="KCTFesBazaarMap.png" alt="KCTFesBazaarMap" className='mt-2'/>
+            <span className={`${ TrainOneFont.className } text-2xl mt-1 m-2 text-white object-none`}>バザーマップ</span>
+            <img src="KCTFesBazaarMap.png" alt="KCTFesBazaarMap" className=''/>
           </div>
         ) : (
           <div></div>
