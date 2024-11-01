@@ -69,7 +69,6 @@ export default function Introduction() {
                     Class="2-2"
                     Title="カジノ"
                     Intro="様々なカジノゲームで遊びます"
-                    Intro="2-2 様々なカジノゲームで遊びます"
                     gradeNum={2}
                     classNum={2}
                 />
@@ -168,7 +167,6 @@ export default function Introduction() {
                     Class="4-I(情報)"
                     Title="4Iプロコン"
                     Intro="プログラミングを用いた作品を展示しています！"
-                    Intro="詳しくはこのQRコードをチェック！"
                     gradeNum={4}
                     classNum={4}
                 />
