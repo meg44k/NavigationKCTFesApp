@@ -32,7 +32,14 @@ export const day1 = {
         startTimeInt : 1210,
         endTime : '12:45',
         endTimeInt : 1245, 
-        teams : ['未定']
+        teams : [
+            'ポッカキッズ',
+            '無負荷損・フンミン',
+            'あんぽん団',
+            'エントリーシート',
+            'カネツギダ',
+            'おっ3ずL♡VE'
+        ]
     },
 
     calm1 : {
@@ -84,7 +91,7 @@ export const day1 = {
         startTimeInt : 1425,
         endTime : '14:45',
         endTimeInt : 1445,
-        teams : ['未定']
+        teams : ['一般参加型です']
     },
 
     live2 : {

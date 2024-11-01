@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function BackSquare(props: {Class?: string, Title:string ,Intro?: string, BGColor: string, Club?:boolean}){
+export default function BackSquare(props: {Class?: string, Title:string ,Intro: string, BGColor: string, Club?:boolean}){
     if (props.Club){
         return(
             <>
