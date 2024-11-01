@@ -47,7 +47,7 @@ function LiveDetail({team,hideDetail}:{team:{name:string,startTime:string,teams:
                     <div className="flex border-b border-black justify-between mx-3">
                         <div className="font-semibold py-2 text-2xl inline">{team.name}</div>
                         <button  type="button" onClick={hideDetail} className="w-6 h-6 pt-3">
-                            <Image src="/BlackCross.svg" alt="Icon"/>
+                            <img src="/BlackCross.svg" alt="Icon"/>
                         </button>
                     </div>
                     <div className="font-semibold py-2 pl-3 pr-28 text-2xl">出場チーム</div>
@@ -100,11 +100,11 @@ export default function Home(){
         <>
             <Analytics />
             <SpeedInsights />
-            <div>
+            <div className="z-50">
                 <Header />
             </div>
             
-            <div className="bg-yellow-400 absolute w-full min-h-full overflow-hidden z-5">
+            <div className="bg-yellow-400 absolute w-full min-h-full overflow-hidden z-0">
                 <div> 
                     {detailIsVisible && <LiveDetail team={team} hideDetail={() => setDetailIsVisible(false)}/>}
                 </div>

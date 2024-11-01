@@ -47,8 +47,8 @@ export const day1 = {
         date : '2',
         startTime : '14:40',
         startTimeInt : 1440,
-        endTime : '15:00',
-        endTimeInt : 1500,
+        endTime : '14:59',
+        endTimeInt : 1459,
         teams : [
             'もなか',
             '優秀なエンジニア',
@@ -61,8 +61,8 @@ export const day1 = {
         date : '2',
         startTime : '15:00',
         startTimeInt : 1500,
-        endTime : '15:20',
-        endTimeInt : 1520,
+        endTime : '15:19',
+        endTimeInt : 1519,
         teams : [
             '初心者',
             'ペンギノン',
