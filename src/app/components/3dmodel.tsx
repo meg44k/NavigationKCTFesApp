@@ -65,11 +65,11 @@ function Modelcanvas() {
         });
 
         const ambientLight = new THREE.AmbientLight(0xffffff);// 環境光源を作成
-        ambientLight.intensity = 0.4;
+        ambientLight.intensity = 0.5;
         scene.add(ambientLight);
         
         const directionalLight = new THREE.DirectionalLight(0xffffff);// 平行光源を作成
-        directionalLight.intensity = 0.6;
+        directionalLight.intensity = 1;
         directionalLight.position.set(1, 3, 1);
         scene.add(directionalLight);
 
