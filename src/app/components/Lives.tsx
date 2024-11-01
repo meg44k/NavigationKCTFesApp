@@ -1,21 +1,21 @@
 export const day1 = {
-    brassBand : {
-        name : 'ブラスバンド',
-        date : '2',
-        startTime : '9:50',
-        startTimeInt : 950,
-        endTime : '10:20',
-        endTimeInt : 1020,
-        teams : ['吹奏楽部']
-    },
+    // brassBand : {
+    //     name : 'ブラスバンド',
+    //     date : '2',
+    //     startTime : '9:50',
+    //     startTimeInt : 950,
+    //     endTime : '10:20',
+    //     endTimeInt : 1020,
+    //     teams : ['吹奏楽部']
+    // },
 
     live1 : {
         name : 'ライブ１',
         date : '2',
-        startTime : '10:30',
-        startTimeInt : 1030,
-        endTime : '12:00',
-        endTimeInt : 1200,
+        startTime : '13:00',
+        startTimeInt : 1300,
+        endTime : '14:30',
+        endTimeInt : 1430,
         teams : [
             'そらいろクローバーZ',
             'きゅるりんってしてみて♡',
@@ -25,30 +25,30 @@ export const day1 = {
         ]
     },
     
-    nOne : {
-        name : 'N-1',
-        date : '2',
-        startTime : '12:10',
-        startTimeInt : 1210,
-        endTime : '12:45',
-        endTimeInt : 1245, 
-        teams : [
-            'ポッカキッズ',
-            '無負荷損・フンミン',
-            'あんぽん団',
-            'エントリーシート',
-            'カネツギダ',
-            'おっ3ずL♡VE'
-        ]
-    },
+    // nOne : {
+    //     name : 'N-1',
+    //     date : '2',
+    //     startTime : '12:10',
+    //     startTimeInt : 1210,
+    //     endTime : '12:45',
+    //     endTimeInt : 1245, 
+    //     teams : [
+    //         'ポッカキッズ',
+    //         '無負荷損・フンミン',
+    //         'あんぽん団',
+    //         'エントリーシート',
+    //         'カネツギダ',
+    //         'おっ3ずL♡VE'
+    //     ]
+    // },
 
     calm1 : {
         name : '癒し系1',
         date : '2',
-        startTime : '12:55',
-        startTimeInt : 1255,
-        endTime : '13:15',
-        endTimeInt : 1325,
+        startTime : '14:40',
+        startTimeInt : 1440,
+        endTime : '15:00',
+        endTimeInt : 1500,
         teams : [
             'もなか',
             '優秀なエンジニア',
@@ -59,10 +59,10 @@ export const day1 = {
     calm2 :{
         name : '癒し系2',
         date : '2',
-        startTime : '13:25',
-        startTimeInt : 1325,
-        endTime : '13:45',
-        endTimeInt : 1345,
+        startTime : '15:00',
+        startTimeInt : 1500,
+        endTime : '15:20',
+        endTimeInt : 1520,
         teams : [
             '初心者',
             'ペンギノン',
@@ -73,10 +73,10 @@ export const day1 = {
     calm3 : {
         name : '癒し系3',
         date : '2',
-        startTime : '13:55',
-        startTimeInt : 1355, 
-        endTime : '14:15',
-        endTimeInt : 1415,
+        startTime : '15:20',
+        startTimeInt : 1520, 
+        endTime : '15:40',
+        endTimeInt : 1540,
         teams : [
             '一流と一留',
             'woleaf',
@@ -84,23 +84,23 @@ export const day1 = {
         ]
     },
 
-    marioKart : {
-        name : 'マリオカート',
-        date : '2',
-        startTime : '14:25',
-        startTimeInt : 1425,
-        endTime : '14:45',
-        endTimeInt : 1445,
-        teams : ['一般参加型です']
-    },
+    // marioKart : {
+    //     name : 'マリオカート',
+    //     date : '2',
+    //     startTime : '14:25',
+    //     startTimeInt : 1425,
+    //     endTime : '14:45',
+    //     endTimeInt : 1445,
+    //     teams : ['一般参加型です']
+    // },
 
     live2 : {
         name : 'ライブ2',
         date : '2',
-        startTime : '14:55',
-        startTimeInt : 1455,
-        endTime : '16:25',
-        endTimeInt : 1625,
+        startTime : '15:50',
+        startTimeInt : 1550,
+        endTime : '17:20',
+        endTimeInt : 1720,
         teams : [
             'Colorful of World',
             'EMPATHY',
@@ -113,10 +113,10 @@ export const day1 = {
     lottery : {
         name :'大抽選会',
         date : '2',
-        startTime : '16:35',
-        startTimeInt : 1635,
-        endTime : '17:35',
-        endTimeInt : 1735,
+        startTime : '17:30',
+        startTimeInt : 1730,
+        endTime : '18:30',
+        endTimeInt : 1830,
         teams : ['抽選券を持っている人']
     }
 }
