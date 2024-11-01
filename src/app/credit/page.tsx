@@ -11,14 +11,12 @@ export default function Credit(){
         <div className='${TrainOneFont.className} Name text-4xl  w-full p-[2%] text-white'>サイト制作者
             <Creator
                 creatorname="山田 優吾"
-                position='リーダー 大まかなデザインを考えタイトルページやメインページ,3Dモデル等々作成'
+                position='リーダー 大まかなデザインを考えタイトルページやメインページ,3Dマップ等々作成'
             />
-            {/* <img src="/pictures/yugo.jpg"className='h-[20%] w-[45%] p-[10%] justify-senter rounded-full' /> */}
             <Creator
                 creatorname="木谷 佑摩"
-                position='なにしてたかわからないけどいろいろしてた'
+                position='3Dマップ上の教室等の位置表示機能の組み込み'
             />
-            {/* <img src="/pictures/travelnitaki2.jpg"className='h-[40%] w-[90%] p-[10%] justify-senter rounded-full' /> */}
             <Creator
                 creatorname="吉本 佳祐"
                 position='出し物一覧・クレジットページ作成'
@@ -33,12 +31,10 @@ export default function Credit(){
             creatorname="Haruto Yoshino"
             position='Project Consultant & Creative Contributor & Special Contributor'
         />
-        {/* <img src="/pictures/haruto.jpg"className='h-[20%] w-[45%] p-[10%] justify-senter rounded-full' /> */}
         <Creator
             creatorname="いりえ きみと"
             position='アドバイザー兼サポートスタッフ兼リサーチャー 作成なし'
         />
-        {/* <img src="/pictures/kimito_haruto.jpg"className='h-[40%] w-[90%] p-[10%] justify-senter rounded-full' /> */}
         </div>
         <div className='${TrainOneFont.className} Name text-4xl  w-full p-[2%] text-white'>
             Sponsor
@@ -69,7 +65,7 @@ export default function Credit(){
         </ul>
         </div>
         <div className='${TrainOneFont.className} Name text-3xl  w-full p-[2%] text-white'> 注釈</div>
-        <div className='"text-lg pl-[5%] text-white'>3Dモデルにはminecraftを使用しました </div>
+        <div className='"text-lg pl-[5%] text-white'>3Dマップにはminecraftを使用しました </div>
         </div>
         </>
     );
