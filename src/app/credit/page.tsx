@@ -6,36 +6,42 @@ import Creator from '@/app/components/ui/creator';
 export default function Credit(){
     return(
         <>
-        <div className='main bg-kct-black flex flex-wrap pt-[70px] pb-[40px] justify-center'>
+        <div className='main bg-kct-black flex flex-wrap pt-[70px] pb-[40px] '>
         <Header />
         <div className='${TrainOneFont.className} Name text-4xl  w-full p-[2%] text-white'>サイト制作者
             <Creator
                 creatorname="山田 優吾"
-                position='リーダー 3Dモデル等々作成'
+                position='リーダー 大まかなデザインを考えタイトルページやメインページ,3Dモデル等々作成'
             />
-            <Creator
-                creatorname="入江 君一"
-                position='アドバイザー兼サポートスタッフ兼リサーチャー 作成なし'
-            />
+            {/* <img src="/pictures/yugo.jpg"className='h-[20%] w-[45%] p-[10%] justify-senter rounded-full' /> */}
             <Creator
                 creatorname="木谷 佑摩"
-                position='3Dモデル等々作成'
+                position='なにしてたかわからないけどいろいろしてた'
             />
-            <Creator
-                creatorname="吉野 晴登"
-                position='スペシャルサンクス'
-            />
+            {/* <img src="/pictures/travelnitaki2.jpg"className='h-[40%] w-[90%] p-[10%] justify-senter rounded-full' /> */}
             <Creator
                 creatorname="吉本 佳祐"
-                position=''
+                position='出し物一覧・クレジットページ作成'
             />
             <Creator
                 creatorname="渡邊 空登"
-                position=''
+                position='ライブナビ作成'
             />
         </div>
+        <div className='${TrainOneFont.className} Name text-4xl  w-full p-[2%] text-white'>Special thanks!
+        <Creator
+            creatorname="Haruto Yoshino"
+            position='Project Consultant & Creative Contributor & Special Contributor'
+        />
+        {/* <img src="/pictures/haruto.jpg"className='h-[20%] w-[45%] p-[10%] justify-senter rounded-full' /> */}
+        <Creator
+            creatorname="いりえ きみと"
+            position='アドバイザー兼サポートスタッフ兼リサーチャー 作成なし'
+        />
+        {/* <img src="/pictures/kimito_haruto.jpg"className='h-[40%] w-[90%] p-[10%] justify-senter rounded-full' /> */}
+        </div>
         <div className='${TrainOneFont.className} Name text-4xl  w-full p-[2%] text-white'>
-            sponsor
+            Sponsor
         <ul className='sponser list-disc text-white text-base pt-[10px] pl-[5%]'>
             <li>株式会社城島高原オペレーションズ城島高原パーク</li>
             <li>株式会社ロッテホールディングス</li>
@@ -62,6 +68,8 @@ export default function Credit(){
             <li>北九州市立美術館</li>
         </ul>
         </div>
+        <div className='${TrainOneFont.className} Name text-3xl  w-full p-[2%] text-white'> 注釈</div>
+        <div className='"text-lg pl-[5%] text-white'>3Dモデルにはminecraftを使用しました </div>
         </div>
         </>
     );
