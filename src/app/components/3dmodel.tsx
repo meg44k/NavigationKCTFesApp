@@ -148,63 +148,64 @@ function Modelcanvas() {
             createText('ライブ会場', new THREE.Vector3(-40, 15, -40));
         });
 
-        //---------------選択されたクラスにズームインする-------------------------
-        
 
         //--------------現在地のマーカーを表示--------------------------------
-        const markerGeometry = new THREE.SphereGeometry(0.5, 32, 32);
-        const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-        const marker = new THREE.Mesh(markerGeometry, markerMaterial);
-        scene.add(marker);
         
-        const updatePosition = (latitude: number, longitude: number) => {
-            const ZEROPOINT : Position = {latitude: 33.816035, longitude: 130.871963};
-            const SCALE_FACTOR : number = 10000;
-            const SCALE_VALUE_X: number = -2;//経度1あたり3Dモデル座標が2動く
-            const SCALE_VALUE_Z: number = 3.9//緯度1あたり3Dモデルが3.9動く
-            //3Dモデルの原点
-            // 33.816432,130.871320 最終桁は停止時でも+-3程度変動
-            // 小数点以下5桁目で計算する
-            //33.81603 - 33.81643 = -0.0004 * 10000 = -4
-            //130.87196 - 130.87132 = 0.00064 * 10000 = 6.4　８0m
+        //GPS機能を実装しようとしたが難しかったため断念
 
-            const ScaledLatitude: number  = (latitude  * SCALE_FACTOR) - (ZEROPOINT.latitude * SCALE_FACTOR);//ここをマイナスすると、上にマーカーが移動
-            const ScaledLongitude: number = (longitude  * SCALE_FACTOR) - (ZEROPOINT.longitude * SCALE_FACTOR);//ここをマイナスすると、右にマーカーが移動
+        // const markerGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+        // const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        // const marker = new THREE.Mesh(markerGeometry, markerMaterial);
+        // scene.add(marker);
+        
+        // const updatePosition = (latitude: number, longitude: number) => {
+        //     const ZEROPOINT : Position = {latitude: 33.816035, longitude: 130.871963};
+        //     const SCALE_FACTOR : number = 10000;
+        //     const SCALE_VALUE_X: number = -2;//経度1あたり3Dモデル座標が2動く
+        //     const SCALE_VALUE_Z: number = 3.9//緯度1あたり3Dモデルが3.9動く
+        //     //3Dモデルの原点
+        //     // 33.816432,130.871320 最終桁は停止時でも+-3程度変動
+        //     // 小数点以下5桁目で計算する
+        //     //33.81603 - 33.81643 = -0.0004 * 10000 = -4
+        //     //130.87196 - 130.87132 = 0.00064 * 10000 = 6.4　８0m
 
-            const MarkerPosX: number = ScaledLongitude * SCALE_VALUE_X;
-            const MarkerPosZ: number = ScaledLatitude * SCALE_VALUE_Z; 
+        //     const ScaledLatitude: number  = (latitude  * SCALE_FACTOR) - (ZEROPOINT.latitude * SCALE_FACTOR);//ここをマイナスすると、上にマーカーが移動
+        //     const ScaledLongitude: number = (longitude  * SCALE_FACTOR) - (ZEROPOINT.longitude * SCALE_FACTOR);//ここをマイナスすると、右にマーカーが移動
+
+        //     const MarkerPosX: number = ScaledLongitude * SCALE_VALUE_X;
+        //     const MarkerPosZ: number = ScaledLatitude * SCALE_VALUE_Z; 
 
 
-            marker.position.set(MarkerPosX, 5, MarkerPosZ);
-        };
+        // };
+        // marker.position.set(31, 8, 24);
 
         //---------------自分の位置を取得--------------------------------------
-        const watchPosition = () => {
-            if ('geolocation' in navigator) {
-                navigator.geolocation.watchPosition(
-                    (pos) => {
-                        const newPosition = {
-                            latitude: pos.coords.latitude,
-                            longitude: pos.coords.longitude,
-                        };
-                        setPosition(newPosition);
-                        updatePosition(newPosition.latitude, newPosition.longitude);
-                    },
-                    (err) => {
-                        setError(`エラー: ${err.message}`);
-                    },
-                    {
-                        enableHighAccuracy: true,
-                        timeout: 5000,
-                        maximumAge: 0,
-                    }
-                );
-            } else {
-                setError('Geolocation APIがサポートされていません。');
-            }
-        };
+        // const watchPosition = () => {
+        //     if ('geolocation' in navigator) {
+        //         navigator.geolocation.watchPosition(
+        //             (pos) => {
+        //                 const newPosition = {
+        //                     latitude: pos.coords.latitude,
+        //                     longitude: pos.coords.longitude,
+        //                 };
+        //                 setPosition(newPosition);
+        //                 updatePosition(newPosition.latitude, newPosition.longitude);
+        //             },
+        //             (err) => {
+        //                 setError(`エラー: ${err.message}`);
+        //             },
+        //             {
+        //                 enableHighAccuracy: true,
+        //                 timeout: 5000,
+        //                 maximumAge: 0,
+        //             }
+        //         );
+        //     } else {
+        //         setError('Geolocation APIがサポートされていません。');
+        //     }
+        // };
 
-        watchPosition();
+        // watchPosition();
 
         // -------------アニメーションの設定-----------------------------------
         function tick() {
@@ -217,7 +218,6 @@ function Modelcanvas() {
                     object.lookAt(camera.position);
                 }
             });
-            // bubbleMesh.lookAt(camera.position);
             renderer.render(scene, camera);
         }
         tick();
@@ -236,7 +236,7 @@ function Modelcanvas() {
     return (
         <>
             <canvas id="myCanvas"></canvas>
-            {position && (
+            {/* {position && (
                 <div style={{
                     position: 'absolute',
                     top: '10px',
@@ -267,7 +267,7 @@ function Modelcanvas() {
                 }}>
                     {error}
                 </div>
-            )}
+            )} */}
         </>
     );
 }

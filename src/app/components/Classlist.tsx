@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { showPerformPlace } from "./showPeformPlace";
 
+
 interface Option {
   value: string;
   label: string;
@@ -76,7 +77,7 @@ export default function ClassList({ grade }: ClassListProps) {
 // 2-2:27, 4, 26
 // 2-1:22, 4, 26
 // 2-4:27, 6, 26
-// 2-5:22, 6, 26
+// 2-5:34, 6, 26
 // 3-?:34, 6, 24
 // 3-?:34, 8, 24
 // 3-?:31, 8, 24

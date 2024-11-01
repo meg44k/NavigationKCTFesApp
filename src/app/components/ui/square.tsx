@@ -1,6 +1,8 @@
 import React from "react";
+import { showPerformPlace } from "../showPeformPlace";
 
-export default function BackSquare(props: {Class?: string, Title:string ,Intro: string, BGColor: string, Club?:boolean}){
+export default function BackSquare(props: {Class?: string, Title:string ,Intro: string, BGColor: string, Club?:boolean, gradeNum?:number, classNum?:number }){
+
     if (props.Club){
         return(
             <>
