@@ -10,6 +10,9 @@ function hamMenu() {
           <ClassList grade={4}/>
           <ClassList grade={5}/>
       </div>
+      <div className="m-2 bottom-0">
+        <a href="/credit" className="text-white">クレジット</a>
+      </div>
   </div>
   );
 }
