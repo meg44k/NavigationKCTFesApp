@@ -55,7 +55,7 @@ export default function Introduction() {
                     BGColor='border-white'
                     Class="2-2"
                     Title="カジノ"
-                    Intro="2-2 様々なカジノゲームで遊びます"
+                    Intro="様々なカジノゲームで遊びます"
                 />
                 <BackSquare
                     BGColor='border-green-600'
@@ -129,7 +129,7 @@ export default function Introduction() {
                     BGColor='border-kct-yellow'
                     Class="4-I(情報)"
                     Title="4Iプロコン"
-                    Intro="詳しくはこのQRコードをチェック！"
+                    Intro="プログラミングを用いた作品を展示しています！"
                 />
                 <BackSquare
                     BGColor='border-red-600'
