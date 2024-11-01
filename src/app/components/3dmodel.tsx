@@ -235,7 +235,7 @@ function Modelcanvas() {
 
     return (
         <>
-            <canvas id="myCanvas"></canvas>
+            <canvas id="myCanvas" className="z-0"></canvas>
             {/* {position && (
                 <div style={{
                     position: 'absolute',

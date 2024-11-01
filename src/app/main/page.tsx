@@ -26,7 +26,7 @@ export default function Main() {
       </label>
       <Header></Header>
       {clicked ? (
-          <div className='flex flex-col bg-kct-black w-screen h-[2000px]'>
+          <div className='flex flex-col bg-kct-black w-screen h-[2000px] p-2'>
             <span className={`${ TrainOneFont.className } text-4xl mt-20 m-2 text-white`}>校内マップ</span>
             <img src="KCTFesMap.png" alt="KCTFesMap" className='mt-2'/>
             <span className={`${ TrainOneFont.className } text-4xl mt-2 m-2 text-white`}>バザーマップ</span>
