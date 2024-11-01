@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import Header from "@/app/components/header";
 import BackSquare from '@/app/components/ui/square';
@@ -18,31 +20,40 @@ export default function Introduction() {
                     Class="1-1"
                     Title="脱獄タイムアタック"
                     Intro="刑務所からの脱獄！罠や謎を速く正確に解きまくれ！！"
-
+                    gradeNum={1}
+                    classNum={1}
                 />
                 <BackSquare
                     BGColor='border-white'
                     Class="1-2"
                     Title="ホラー脱出ゲーム"
                     Intro="私たちはホラー要素を含んだ脱出ゲームを作りました。是非いらしてください。"
+                    gradeNum={1}
+                    classNum={2}
                 />
                 <BackSquare
                     BGColor='border-green-600'
                     Class="1-3"
                     Title="亡くし者"
                     Intro="カラダ探しをモチーフにお化け屋敷を作りました！"
+                    gradeNum={1}
+                    classNum={3}
                 />
                 <BackSquare
                     BGColor='border-kct-yellow'
                     Class="1-4"
                     Title="高専カジノ"
                     Intro="遊びながら『景品』で大儲けも夢じゃない！？(子供も遊べます)"
+                    gradeNum={1}
+                    classNum={4}
                 />
                 <BackSquare
                     BGColor='border-red-600'
                     Class="1-5"
                     Title="メカニカルシューター"
                     Intro="あなたの家に特殊部隊が攻め込んできても安心安全撃退できます！"
+                    gradeNum={1}
+                    classNum={5}
                 />
                 <h1 className={`${TrainOneFont.className} year text-4xl w-full p-[2%] text-white`}>2年生</h1>
                 <BackSquare
@@ -50,30 +61,40 @@ export default function Introduction() {
                     Class="2-1"
                     Title="バルーンアート教室"
                     Intro="2-1生徒と一緒にバルーンアートを作ったり，作ったアートを展示します"
+                    gradeNum={2}
+                    classNum={1}
                 />
                 <BackSquare
                     BGColor='border-white'
                     Class="2-2"
                     Title="カジノ"
                     Intro="2-2 様々なカジノゲームで遊びます"
+                    gradeNum={2}
+                    classNum={2}
                 />
                 <BackSquare
                     BGColor='border-green-600'
                     Class="2-3"
                     Title="フォトスポット"
                     Intro="<ここにキャッチコピーを入力してください>"
+                    gradeNum={2}
+                    classNum={3}
                 />
                 <BackSquare
                     BGColor='border-kct-yellow'
                     Class="2-4"
                     Title="VS2-4"
                     Intro="VS嵐を基に3つの遊びを用意しています！ぜひ遊びに来てください！"
+                    gradeNum={2}
+                    classNum={4}
                 />
                 <BackSquare
                     BGColor='border-red-600'
                     Class="2-5"
                     Title="お化け屋敷"
                     Intro="暗闇の中にこわ～いお化けが潜んでいるかも？！ぜひお越しください！"
+                    gradeNum={2}
+                    classNum={5}
                 />
                 <h1 className={`${TrainOneFont.className} year text-4xl w-full p-[2%] text-white`}>3年生</h1>
                 <BackSquare
@@ -81,30 +102,40 @@ export default function Introduction() {
                     Class="3-1"
                     Title="キッキングスナイパー"
                     Intro="某テレビ番組で大人気だったゲームが復活！思い切り楽しもう！"
+                    gradeNum={3}
+                    classNum={1}
                 />
                 <BackSquare
                     BGColor='border-white'
                     Class="3-2"
                     Title="脱出ゲーム"
                     Intro="ピクミンをモチーフにした脱出ゲームです。ぜひ来てください"
+                    gradeNum={3}
+                    classNum={2}
                 />
                 <BackSquare
                     BGColor='border-green-600'
                     Class="3-3"
                     Title="ハリーポッターと3Eの部屋"
                     Intro="人気映画ハリー・ポッターの舞台が高専に！？君達も魔法を体験してみよう！！写真も撮れるよ！！"
+                    gradeNum={3}
+                    classNum={3}
                 />
                 <BackSquare
                     BGColor='border-kct-yellow'
                     Class="3-4"
                     Title="コウセンオー＆類似マンション"
                     Intro="デジタルカードゲーム＆ルイ〇ジマンションに類似したマンション"
+                    gradeNum={3}
+                    classNum={4}
                 />
                 <BackSquare
                     BGColor='border-red-600'
                     Class="3-5"
                     Title="高専人生ゲーム"
                     Intro="高専生をゲームで類似した"
+                    gradeNum={3}
+                    classNum={5}
                 />
                 <h1 className={`${TrainOneFont.className} year text-4xl w-full p-[2%] text-white`}>4年生</h1>
                 <BackSquare
@@ -112,30 +143,40 @@ export default function Introduction() {
                     Class="4-M(機械)"
                     Title="KOUSEN UCHIDA"
                     Intro="フォトスポットです(*^^*)ぜひみんな来てください"
+                    gradeNum={4}
+                    classNum={1}
                 />
                 <BackSquare
                     BGColor='border-white'
                     Class="4-R(知能)"
                     Title="ピタゴラレース"
                     Intro="ピタゴラスイ〇チ風のビー玉レースを予定しています"
+                    gradeNum={4}
+                    classNum={2}
                 />
                 <BackSquare
                     BGColor='border-green-600'
                     Class="4-E(電気)"
                     Title="人間モグラ叩き"
                     Intro="説明"
+                    gradeNum={4}
+                    classNum={3}
                 />
                 <BackSquare
                     BGColor='border-kct-yellow'
                     Class="4-I(情報)"
                     Title="4Iプロコン"
                     Intro="詳しくはこのQRコードをチェック！"
+                    gradeNum={4}
+                    classNum={4}
                 />
                 <BackSquare
                     BGColor='border-red-600'
                     Class="4-C(科学)"
                     Title="科学遊び"
                     Intro="皆が知っているあの遊びに科学風にアレンジしました！"
+                    gradeNum={4}
+                    classNum={5}
                 />
                 <h1 className={`${TrainOneFont.className} year text-4xl w-full p-[2%] text-white`}>5年生</h1>
                 <BackSquare
@@ -143,30 +184,40 @@ export default function Introduction() {
                     Class="5-M(機械)"
                     Title="ロボット展示"
                     Intro="授業で作ったロボットを展示しています！ぜひ来てください！"
+                    gradeNum={5}
+                    classNum={1}
                 />
                 <BackSquare
                     BGColor='border-white'
                     Class="5-R(知能)"
                     Title="人間サイズボードゲーム"
                     Intro="ハリー・ポッターの世界を再現！等身大のチェス駒を動かして楽しもう"
+                    gradeNum={5}
+                    classNum={2}
                 />
                 <BackSquare
                     BGColor='border-green-600'
                     Class="5-E(電気)"
                     Title="手作り射的"
                     Intro="手作り射的で動く的を射抜くゲームです。目指せハイスコア！"
+                    gradeNum={5}
+                    classNum={3}
                 />
                 <BackSquare
                     BGColor='border-kct-yellow'
                     Class="5-I(情報)"
                     Title="nit-kit-center"
                     Intro="高専で学んだ魏喩つの集大成！手作りゲームセンターで特別な体験を！"
+                    gradeNum={5}
+                    classNum={4}
                 />
                 <BackSquare
                     BGColor='border-red-600'
                     Class="5-C(科学)"
                     Title="劇場版名探偵みっちゃん~手殷の前夜祭~"
                     Intro="5Cにて殺人事件！？見た目は少年頭脳は中年その名も名探偵みっちゃん"
+                    gradeNum={5}
+                    classNum={5}
                 />
                 <h1 className={`${TrainOneFont.className} year text-4xl w-full p-[2%] text-white`}>クラブバザー</h1>
                 <h3 className={`${TrainOneFont.className} year text-3xl w-full p-[2%] text-white`}>屋内バザー</h3>

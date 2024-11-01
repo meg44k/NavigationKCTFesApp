@@ -14,6 +14,21 @@ interface Position {
     latitude: number;//緯度
     longitude: number;//経度
 }
+let width: number;
+let height: number;
+
+if (typeof window !== "undefined") {
+    width = window.innerWidth;
+    height = window.innerHeight;
+} else {
+    // サーバーサイドでの初期値を設定
+    width = 800; // 任意のデフォルト値
+    height = 600; 
+}
+
+export const scene = new THREE.Scene();// シーンを作成、シーンは3D空間のこと
+export const camera = new THREE.PerspectiveCamera(45, width / height); // カメラの作成 new THREE.PerspectiveCamera(画角, アスペクト比)
+
 
 function Modelcanvas() {
     const [position, setPosition] = useState<Position | null>(null);
@@ -21,9 +36,6 @@ function Modelcanvas() {
 
     useEffect(() => {
         //--------------3D空間を扱うための設定--------------------------
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-
         const canvas = document.querySelector('#myCanvas') as HTMLCanvasElement | null;
 
         if (!canvas) {
@@ -31,23 +43,20 @@ function Modelcanvas() {
             return;
         }
 
-        // WebGLRendererの作成
-        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-        //  canvasのサイズを指定
-        renderer.setSize(width, height);
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true }); // WebGLRendererの作成
+        renderer.setSize(width, height); // canvasのサイズを指定
         document.body.appendChild(renderer.domElement);
 
-        //  シーンを作成、シーンは3D空間のこと
-        const scene = new THREE.Scene();
         scene.background = new THREE.Color( 0x3B3D3D );
 
-        // カメラの作成 new THREE.PerspectiveCamera(画角, アスペクト比)
-        const camera = new THREE.PerspectiveCamera(45, width / height);
         camera.position.set(-100, 100, 100);
 
         const controls = new OrbitControls(camera, document.body);
         controls.minPolarAngle = Math.PI / 4; // 最小の垂直角度 (45度)
         controls.maxPolarAngle = Math.PI / 2; // 最大の垂直角度 (90度)
+        controls.maxDistance = 200; //最大ズームアウト半径
+        controls.minDistance = 10;  //最大ズームイン半径
+
         // カメラの位置を制限するための関数
         controls.addEventListener('change', () => {
             if (camera.position.y < 0) {
@@ -55,14 +64,12 @@ function Modelcanvas() {
             }
         });
 
-        // 環境光源を作成
-        const ambientLight = new THREE.AmbientLight(0xffffff);
-        ambientLight.intensity = 0.5;
+        const ambientLight = new THREE.AmbientLight(0xffffff);// 環境光源を作成
+        ambientLight.intensity = 0.4;
         scene.add(ambientLight);
-
-        // 平行光源を作成
-        const directionalLight = new THREE.DirectionalLight(0xffffff);
-        directionalLight.intensity = 1;
+        
+        const directionalLight = new THREE.DirectionalLight(0xffffff);// 平行光源を作成
+        directionalLight.intensity = 0.6;
         directionalLight.position.set(1, 3, 1);
         scene.add(directionalLight);
 
@@ -93,7 +100,7 @@ function Modelcanvas() {
                         });
             },
         );
-
+        
         //--------------font.jsonファイルの読み込み--------------------------
         const fontLoader = new FontLoader();
         fontLoader.load('/fonts/NotoSansJPRegular.json', (font) => {
@@ -121,8 +128,7 @@ function Modelcanvas() {
                     textGeometry.boundingBox.getCenter(centerOffset);
                 }
 
-                // テキストメッシュをグループに追加し、ピボットポイントを調整
-                const textGroup = new THREE.Group();
+                const textGroup = new THREE.Group();// テキストメッシュをグループに追加し、ピボットポイントを調整
                 textMesh.position.sub(centerOffset);
                 textGroup.add(textMesh);
                 textGroup.position.copy(position);
@@ -142,28 +148,36 @@ function Modelcanvas() {
             createText('ライブ会場', new THREE.Vector3(-40, 15, -40));
         });
 
+
         //--------------現在地のマーカーを表示--------------------------------
-        const markerGeometry = new THREE.SphereGeometry(0.5, 32, 32);
-        const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-        const LARGE_NUM : number = 10000;
-        const marker = new THREE.Mesh(markerGeometry, markerMaterial);
-        scene.add(marker);
-        const updatePosition = (latitude: number, longitude: number) => {
+        
+        //GPS機能を実装しようとしたが難しかったため断念
 
-            //3Dモデルの原点
-            const zeroPoint : Position = {latitude: 33.816035, longitude: 130.87196};
+        // const markerGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+        // const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        // const marker = new THREE.Mesh(markerGeometry, markerMaterial);
+        // scene.add(marker);
+        
+        // const updatePosition = (latitude: number, longitude: number) => {
+        //     const ZEROPOINT : Position = {latitude: 33.816035, longitude: 130.871963};
+        //     const SCALE_FACTOR : number = 10000;
+        //     const SCALE_VALUE_X: number = -2;//経度1あたり3Dモデル座標が2動く
+        //     const SCALE_VALUE_Z: number = 3.9//緯度1あたり3Dモデルが3.9動く
+        //     //3Dモデルの原点
+        //     // 33.816432,130.871320 最終桁は停止時でも+-3程度変動
+        //     // 小数点以下5桁目で計算する
+        //     //33.81603 - 33.81643 = -0.0004 * 10000 = -4
+        //     //130.87196 - 130.87132 = 0.00064 * 10000 = 6.4　８0m
 
-            // 33.816432,130.871320 最終桁は停止時でも+-3程度変動
-            // 小数点以下5桁目で計算する
-            //33.81603 - 33.81643 = -0.0004 * 10000 = -4
-            //130.87196 - 130.87132 = 0.00064 * 10000 = 6.4　８0m
+        //     const ScaledLatitude: number  = (latitude  * SCALE_FACTOR) - (ZEROPOINT.latitude * SCALE_FACTOR);//ここをマイナスすると、上にマーカーが移動
+        //     const ScaledLongitude: number = (longitude  * SCALE_FACTOR) - (ZEROPOINT.longitude * SCALE_FACTOR);//ここをマイナスすると、右にマーカーが移動
 
-            const markX = (latitude  * LARGE_NUM) - (zeroPoint.latitude * LARGE_NUM);//ここをマイナスすると、上にマーカーが移動
-            console.log(markX);
-            const markZ = (longitude  * LARGE_NUM) - (zeroPoint.longitude * LARGE_NUM);//ここをマイナスすると、右にマーカーが移動
-            console.log(markZ);
-            marker.position.set(markX, 5, markZ);
-        };
+        //     const MarkerPosX: number = ScaledLongitude * SCALE_VALUE_X;
+        //     const MarkerPosZ: number = ScaledLatitude * SCALE_VALUE_Z; 
+
+
+        // };
+        // marker.position.set(31, 8, 24);
 
         //---------------自分の位置を取得--------------------------------------
         // const watchPosition = () => {
@@ -204,7 +218,6 @@ function Modelcanvas() {
                     object.lookAt(camera.position);
                 }
             });
-
             renderer.render(scene, camera);
         }
         tick();
