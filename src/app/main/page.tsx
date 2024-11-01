@@ -5,7 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { useState } from 'react';
 
 import { TrainOneFont } from '@/../utils/fonts';
-import Header from "@/app/components/header";
+import Header from "@/app/components/headerMain";
 import Modelcanvas from "@/app/components/3dmodel";
 
 export default function Main() {

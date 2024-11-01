@@ -36,7 +36,7 @@ export default function ClassList({ grade }: ClassListProps) {
     else if(selectedValueStr==="option4")selectedValueInt = 4;
     else if(selectedValueStr==="option5")selectedValueInt = 5;
 
-    showPerformPlace(grade,selectedValueInt)
+    showPerformPlace(grade,selectedValueInt);
     
   };
 
