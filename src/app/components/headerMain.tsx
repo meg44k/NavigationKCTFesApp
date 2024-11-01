@@ -39,9 +39,44 @@ export default function Header() {
                             <a className={`${NotoSansJPFont.className} mr-2`} href="./intro">出し物一覧</a>
                             <a className={`${NotoSansJPFont.className} mx-2`} href="./livenav">ライブナビ</a>
                         </div>
+                        <div>
+                            <button
+                            id="button"
+                            type="button"
+                            className="fixed right-6 z-10 ml-4"
+                            onClick={hamMenuFanc}
+                            >
+                            {clicked ? (
+                                <img className="w-6 h-6" src="./HamburgerBar.svg" alt="" />
+
+                            ) : (
+                                <img className="w-6 h-6" src="./cross.svg" alt="" />
+
+                            )}
+                            </button>
+                        </div>
                     </div>
                 </header>
             </div>
+            {clicked ? (
+                hamFirst ? (
+                    <></>
+                    ):(
+                        <>
+                            <div className="animate-scale-down-hor-right">
+                                <HamMenu/>
+                            </div>
+                        </>
+                    )
+                        
+                ) : (
+                    <>
+                        <div className="animate-scale-up-hor-right">
+                            <HamMenu/>
+                        </div>
+                    </>
+                )}
+                
         </>
     );
 }
