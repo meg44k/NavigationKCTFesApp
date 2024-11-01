@@ -1,8 +1,8 @@
 "use client"
+
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { useState } from 'react';
-import Image from 'next/image';
 
 import { TrainOneFont } from '@/../utils/fonts';
 import Header from "@/app/components/header";
@@ -26,7 +26,7 @@ export default function Main() {
       </label>
       <Header></Header>
       {clicked ? (
-          <div className='flex flex-col bg-kct-black w-screen h-screen'>
+          <div className='flex flex-col bg-kct-black w-screen h-[2000px]'>
             <span className={`${ TrainOneFont.className } text-4xl mt-20 m-2 text-white`}>校内マップ</span>
             <img src="KCTFesMap.png" alt="KCTFesMap" className='mt-2'/>
             <span className={`${ TrainOneFont.className } text-4xl mt-2 m-2 text-white`}>バザーマップ</span>
