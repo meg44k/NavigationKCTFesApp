@@ -8,3 +8,11 @@
 - [けい](https://github.com/keich439)
 - [ゆうご](https://github.com/meg44k)
 
+## 使用技術
+### フレームワーク
+- Next.js / Typescript
+
+### ライブラリ等
+- Three.js
+- Tailwind
+- Minecraft
